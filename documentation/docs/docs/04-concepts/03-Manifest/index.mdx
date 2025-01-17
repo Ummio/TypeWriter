@@ -1,46 +1,54 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
 import RiveBoard from "@site/src/components/RiveBoard";
 
-# Manifest Entries
+# 清单条目
 
-In Typewriter, there are multiple types of entries, the main one `Sequence Entries`, these are `Dialogue Entries`, `Event Entries`, and `Action Entries`. The next major type of entry is the `Manifest Entry`. While `Sequence Entries` are imperative, `Manifest Entries` are declarative. Let's explore the difference between these two approaches and how they work.
+清单条目是在[清单页面](../02-Pages/02-manifest.mdx)中定义的条目。
+它们用于定义可以在多个[序列页面](../02-Pages/01-sequence.mdx)中重复使用的内容。
 
-## Then vs When
+## 清单条目的类型
 
-### Then (`Sequence entries`)
-The "Then" logic, represented by `Sequence Entries`, works like a set of instructions: "Do this, then do that, then do this other thing." It's like a sideways directed graph, where each step leads to the next in a linear fashion.
+清单条目有两种主要类型:
 
-Example: Let's consider a Minecraft boss bar that needs to be displayed and updated as a player moves through a village.
+### 定义条目
 
-With the "Then" logic, you would:
-1. Show the boss bar when the player enters the village
-2. Update the boss bar text to "Welcome to the village!"
-3. Update the boss bar text to "Check out the blacksmith!" when the player enters the blacksmith's building
-4. Update the boss bar text back to "Welcome to the village!" when the player exits the blacksmith's building
-5. Hide the boss bar when the player leaves the village
+定义条目用于定义可以在序列页面中使用的内容。
+例如,NPC定义条目定义了NPC的外观和行为。
 
-### When (`Manifest Entries`)
-The "When" logic, represented by `Manifest Entries`, defines conditions and specifies what should happen when those conditions are met. It's like a tree structure, where different branches represent different conditions and their corresponding actions.
+### 实例条目
 
-Example: Using the same village scenario, with the "When" logic, you would:
- - When the player is in the village
-   - Show the boss bar with the text "Welcome to the village!"
- - When the player is in the blacksmith's building
-   - Update the boss bar text to "Check out the blacksmith!"
+实例条目用于在游戏世界中放置定义条目。
+例如,NPC实例条目在游戏世界中放置一个NPC定义。
 
-In this approach, you define the conditions under which an action should occur, rather than specifying a linear sequence of steps.
-Suppose you wanted to add more buildings to the village and have different messages displayed when the player enters each building. 
-Doing this with the "Then" logic would incur a lot of repetitive entries, while with the "When" logic, you can simply add more conditions and actions and Typewriter will figure out what to display based on the player's location.
+## 定义和实例的关系
 
-## Interactive Visualization
+定义和实例之间的关系如下:
 
-To better understand the difference between "Then" and "When" logic, let's explore an interactive visualization.
-Try moving your cursor over the village and blacksmith's building to see how the boss bar changes based on the player's location.
+<RiveBoard stateMachines="State Machine 1" artboard="Definition Instance" aspectRatio={500/300} src={require('./assets/manifest_entries.riv').default} />
 
-On the bottom you will see how the "Then" and "When" logic is represented in a directed graph and a tree structure respectively.
+如上所示:
+- 定义条目定义了内容的外观和行为
+- 实例条目在游戏世界中放置定义条目
+- 一个定义可以有多个实例
+- 一个实例只能有一个定义
 
-<RiveBoard stateMachines="State Machine" src={require('./assets/manifest.riv').default} 
- />
+## 定义和实例的示例
+
+以下是一些定义和实例的示例:
+
+| 定义 | 实例 | 描述 |
+|------------|-----------|-------------|
+| NPC定义 | NPC实例 | 定义NPC的外观和行为,实例在世界中放置NPC |
+| 任务定义 | 任务实例 | 定义任务的目标和奖励,实例在世界中放置任务 |
+| 对话定义 | 对话实例 | 定义对话的内容和选项,实例在世界中放置对话 |
+
+## 为什么使用定义和实例?
+
+使用定义和实例有以下好处:
+- 可以在多个地方重复使用相同的内容
+- 更容易管理和修改内容
+- 减少重复工作
+- 保持内容的一致性

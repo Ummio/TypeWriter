@@ -1,5 +1,5 @@
 ---
-difficulty: Hard
+difficulty: 困难
 ---
 
 import Player from "@site/src/components/Player";
@@ -11,104 +11,98 @@ export const questPages = [
     require("./assets/index/quest_static.json"),
 ];
 
-# Questing
-:::danger[Quest Extension]
-You must have installed the Quest Extension before starting this tutorial.
+# 任务系统
+
+:::danger[任务扩展]
+在开始本教程之前,你必须先安装任务扩展。
 :::
 
-Any interactive storytelling game is going to have quests. 
-Quests are designed to guide players through the story and provide a sense of progression.
+任何互动叙事游戏都会有任务系统。任务旨在引导玩家完成故事并提供进度感。
 
-In Typewriter, quests are purely a visual addition.
-While not required to create interactive stories, they can effectively guide players through the narrative.
+在 Typewriter 中,任务纯粹是一个视觉上的补充。虽然创建互动故事并不一定需要任务系统,但它可以有效地引导玩家完成叙事。
 
-## Setting up the Story
+## 设置故事
 
-To add quests to your story, we first need a story to work with. 
-For this guide, we'll create the following quest:
+要为你的故事添加任务,我们首先需要一个故事来使用。在本指南中,我们将创建以下任务:
 
-1. The player encounters a chasm where the wind is too strong to walk across the bridge.
-2. The player needs to find a way to cross the chasm.
-3. The player discovers magnet boots nearby.
-4. When wearing the magnet boots, the player can walk across the chasm.
+1. 玩家遇到一个峡谷,风太大无法走过桥。
+2. 玩家需要找到一种方法穿过峡谷。
+3. 玩家在附近发现磁力靴。
+4. 穿上磁力靴后,玩家可以走过峡谷。
 
-Here's the setup for the quest:
+以下是任务的设置:
 
 <EntryDisplay pages={[
     require("./assets/index/setup_manifest.json"),
     require("./assets/index/setup_sequence.json"),
 ]} />
 
-Here is a demo of the setup described above:
+这是上述设置的演示:
 <Player url={require("./assets/index/setup_demo.webm").default} />
 
-## Creating the Quest
+## 创建任务
 
-As you can see in the setup, Typewriter doesn't require questing components to create interactive stories. Unlike most quest plugins where quests are the main feature, in Typewriter, they serve as a visual addition – a way to guide players through the story and provide a sense of progression.
+正如你在设置中看到的,Typewriter 不需要任务组件就可以创建互动故事。与大多数将任务作为主要功能的插件不同,在 Typewriter 中,任务只是一个视觉补充 - 一种引导玩家完成故事并提供进度感的方式。
 
-To create a quest, we first need to create a manifest page.
-This page will contain all the entries that make up the quest.
+要创建任务,我们首先需要创建一个清单页面。这个页面将包含构成任务的所有条目。
 
-### How Quests Work
+### 任务如何工作
 
-In Typewriter, two types of entries are used to create quests: `Quest` Entry and `Objective` Entry.
+在 Typewriter 中,使用两种类型的条目来创建任务:`任务`条目和`目标`条目。
 
-The `Quest` Entry defines the name of the quest.
-The `Objective` Entry defines the objectives of the quest.
+`任务`条目定义任务的名称。
+`目标`条目定义任务的目标。
 
-### Quest Entry
+### 任务条目
 
-The `Quest` Entry is used to define the quest.
-A quest can be in one of three states:
-- Inactive: The quest is neither active nor completed.
-- Active: The quest is active and not yet completed by the player.
-- Completed: The quest has been completed.
+`任务`条目用于定义任务。一个任务可以处于以下三种状态之一:
+- 未激活: 任务既未激活也未完成。
+- 激活: 任务已激活但玩家尚未完成。
+- 已完成: 任务已完成。
 
-There are three important fields for the `Quest` Entry:
-- `Display Name`: The name of the quest.
-- `Active Criteria`: The criteria that must be met for the quest to become active.
-- `Completed Criteria`: The criteria that must be met for the quest to be considered completed.
+`任务`条目有三个重要字段:
+- `显示名称`: 任务的名称。
+- `激活条件`: 任务变为激活状态必须满足的条件。
+- `完成条件`: 任务被视为完成必须满足的条件。
 
-The state of the quest is determined as follows:
-1. If all the `Completed Criteria` are met: The quest is completed.
-2. If all the `Active Criteria` are met: The quest is active.
-3. Otherwise, the quest is inactive.
+任务状态的确定方式如下:
+1. 如果满足所有`完成条件`: 任务完成。
+2. 如果满足所有`激活条件`: 任务激活。
+3. 否则,任务未激活。
 
-
-For our quest, we'll use a `Permanent Fact` to hold the state of the quest for the player.
-We create the following `Quest` Entry:
+对于我们的任务,我们将使用一个`永久事实`来保存玩家的任务状态。
+我们创建以下`任务`条目:
 
 <EntryNodeInspector entryId="Pd5ZLgeKRhbylic" pages={questPages} />
 
-### Objective Entry
+### 目标条目
 
-The `Objective` Entry defines a task that needs to be completed as part of the quest.
-There are various types of objectives, allowing Typewriter to display them in different ways.
+`目标`条目定义了作为任务一部分需要完成的任务。有各种类型的目标,允许 Typewriter 以不同方式显示它们。
 
-While Quests have three different states, Objectives only have two:
-- Hidden: The objective is not visible to the player.
-- Visible: The objective is visible to the player.
+虽然任务有三种不同的状态,但目标只有两种:
+- 隐藏: 目标对玩家不可见。
+- 可见: 目标对玩家可见。
 
-These states are influenced by both the `Criteria` field and their `Audience` parent entries.
+这些状态受`条件`字段和它们的`受众`父条目的影响。
 
-For now, we'll only use the `Criteria` field to determine if the objective is visible or not.
+现在,我们只使用`条件`字段来确定目标是否可见。
 
-Let's set up the objective for our quest like this:
+让我们这样设置任务的目标:
 
 <EntryNodeInspector entryId="jE0Rv5oUP8kXNGV" pages={questPages} />
 
-## Finishing the Quest
-For the final step, we need to change the `Permanent Fact` entry to `1` when the player first falls down the chasm and to `2` when they reach the other side.
+## 完成任务
+最后一步,我们需要在玩家第一次掉入峡谷时将`永久事实`条目更改为`1`,当他们到达另一边时更改为`2`。
 
 <EntryDisplay pages={questPages} />
 
-Here's a demo of the finished quest:
+这是完成的任务演示:
 <Player url={require("./assets/index/quest_demo.webm").default} />
 
-## Quest Tracking
+## 任务追踪
 
-We've seen that `Quests` can be in one of 3 states.
-Additionally, we can **Track** one quest at a time. 
-Tracking a quest is used for displaying the quest progress to the player.
+我们已经看到`任务`可以处于3种状态之一。
+此外,我们一次可以**追踪**一个任务。
+追踪任务用于向玩家显示任务进度。
 
-To learn more about quest display, check out the [Displaying Quests Guide](05-displaying_quests.mdx).
+要了解更多关于任务显示的信息,请查看[显示任务指南](05-displaying_quests.mdx)。

@@ -1,35 +1,36 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
-# PacketEvents Troubleshooting
+# PacketEvents 故障排除
 
-If you encounter errors when enabling the Typewriter plugin, such as `java.lang.NoClassDefFoundError` related to `io.github.retrooper.packetevents`, this could be due to an incompatible version of the PacketEvents plugin.
+如果在启用 Typewriter 插件时遇到与 `io.github.retrooper.packetevents` 相关的错误，如 `java.lang.NoClassDefFoundError`，这可能是由于 PacketEvents 插件版本不兼容导致的。
 
-## Error Message
+## 错误信息
 
-An example of the error message you might see:
+你可能会看到类似这样的错误信息：
 
 ```bash
-[12:41:54 ERROR]: Error occurred while enabling Typewriter v0.5.1 (Is it up to date?)
+[12:41:54 ERROR]: 启用 Typewriter v0.5.1 时发生错误（是否已更新？）
 java.lang.NoClassDefFoundError: io/github/retrooper/packetevents/bstats/Metrics$CustomChart
         at me.gabber235.typewriter.entry.entity.EntityHandler.initialize(EntityHandler.kt:23) ~[typewriter (5).jar:?]
         at me.gabber235.typewriter.Typewriter.onEnableAsync(Typewriter.kt:121) ~[typewriter (5).jar:?]
 ```
-## Cause of the Issue
 
-This error occurs because the installed version of PacketEvents is not compatible with the version of Typewriter you are using. **Typewriter v0.5.1 requires PacketEvents version 2.5.x.** Using a newer version of PacketEvents can cause compatibility issues due to changes in the API.
+## 问题原因
 
-### Steps to Fix
+这个错误发生是因为安装的 PacketEvents 版本与你正在使用的 Typewriter 版本不兼容。**Typewriter v0.5.1 需要 PacketEvents 2.5.x 版本。**使用更新版本的 PacketEvents 可能会因 API 变更导致兼容性问题。
 
-1. **Remove** the current PacketEvents plugin from your server's `plugins` folder.
+### 解决步骤
 
-2. **Download** PacketEvents version **2.5.0** [via this url](https://modrinth.com/plugin/packetevents/version/QLgJReg5).
+1. **删除**服务器 `plugins` 文件夹中当前的 PacketEvents 插件。
 
-3. **Place** the downloaded PacketEvents jar into your server's `plugins` folder.
+2. **下载** PacketEvents **2.5.0** 版本，[点击此链接下载](https://modrinth.com/plugin/packetevents/version/QLgJReg5)。
 
-4. **Restart** your server to apply the changes.
+3. **放置**下载的 PacketEvents jar 文件到服务器的 `plugins` 文件夹中。
 
-## Verifying the Fix
+4. **重启**服务器以应用更改。
 
-After following the steps above, the Typewriter plugin should load without errors. Check your server logs to ensure there are no longer any `NoClassDefFoundError` errors related to PacketEvents.
+## 验证修复
+
+按照上述步骤操作后，Typewriter 插件应该能够正常加载。检查服务器日志，确认不再出现与 PacketEvents 相关的 `NoClassDefFoundError` 错误。

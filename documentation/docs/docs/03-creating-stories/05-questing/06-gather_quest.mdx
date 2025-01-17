@@ -1,5 +1,5 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
 import Player from "@site/src/components/Player";
@@ -16,70 +16,58 @@ export const sequencePages = [
     require("./assets/gather_quest/manifest_sequence.json"),
 ];
 
-# Gather Quest
-:::danger[Quest Extension]
-You must have installed the Quest Extension before starting this tutorial.
+# 收集任务
+:::danger[任务扩展]
+在开始本教程之前,你必须先安装任务扩展。
 :::
-:::info[Before starting]
-This tutorial assumes you have already have a understanding of how interactions, facts and quests work.\
-Secondly it should be noted that this is a very specifc guide and the tutorial will be made per page type.
+:::info[开始之前]
+建议先阅读[任务系统](./index.mdx)再开始本教程。
 :::
 
-In this tutorial we will create a quest that requires the player to gather a set of items.
+在本教程中,你将学习如何创建一个收集任务。这种类型的任务要求玩家收集特定数量的物品。
 
-## Manifest Page
-In the manifest page we will declare the quest and it's objectives.
+## 创建任务
 
-### Creating the quest
-First we need to create the quest this can be done by clicking on the + icon in the top right corner of the panel and searching for `Add Quest`. Add it to your page by clicking on the + icon.
+首先,我们需要创建一个清单页面并添加一个任务条目。
 
 <EntrySearch entryName="quest"/>
 
-#### Configuring the quest
-In the quest entry we will set the following fields:
+### 配置任务
+在任务条目内,我们需要配置以下字段:
+- **显示名称**: 这是任务的名称,玩家将看到这个名称。
+- **激活条件**: 这些条件必须满足才能激活任务。
+- **完成条件**: 这些条件必须满足才能完成任务。
 
-<EntryNodeInspector entryId="utBJsvNPUCv5nw7" pages={manifestPages} />
+对于本教程,我们将创建一个要求玩家收集64个石头的任务。
 
-### Creating the objective
-Next we need to create the objectives for the quest. This can be done by clicking on the + icon in the top right corner of the panel and searching for `Add Completable Objective`. Add it to your page by clicking on the + icon.
+<EntryNodeInspector entryId="7FTmTrqbWsq7wSj" pages={manifestPages} />
 
-<EntrySearch entryName="completable_objective"/>
+### 添加目标
+现在我们需要添加一个目标来显示玩家需要收集多少石头。
 
-#### Configuring the objective
-Now we need to configure the objective. For this guide we will be having the objective be that the player needs to collect 64 stone but this can be anything you want.
+<EntryNodeInspector entryId="7FTmTrqbWsq7wSj" pages={manifestPages} />
 
-Please use the following fields below in your objective:
-
-<EntryNodeInspector entryId="SKZSs4pDNrjGmCQ" pages={manifestPages} />
-
-### Manifest result
-Now your pages should look something like this:
+### 清单结果
+现在你的页面应该看起来像这样:
 <EntryDisplay pages={manifestPages} />
-:::tip[Displaying the quest]
-If you want to display the quest in a sidebar for example please refer to the [display quests documentation](./05-displaying_quests.mdx).
-:::
-## Sequence page
-In the sequence page you can define how you would like to start your quest. This can be all sorts of events. For this guide we will be using the [Entity Interact Event](../entity-extension/interacting) from the Entity Extension.
-:::warning[Oliver]
-For this guide we will not be documentating how to create the npc please refer to the [Entity Extension documentation](../04-entity-extension/index.mdx) for more information.
-:::
-### Starting the quest
-To start the quest there are a lot of options. For this guide we will start the quest from a spoken but this can be anything you want. Please add a spoken to your sequence page.
+
+## 触发任务
+要开始任务有很多选项。对于本指南,我们将通过对话来开始任务,但这可以是任何你想要的方式。请在你的序列页面中添加一个对话条目。
 
 <EntrySearch entryName="spoken"/>
 
-#### Configuring the spoken
-Inside the spoken please configure the following fields as following:
+#### 配置对话
+在对话内请按如下方式配置字段:
 
 <EntryNodeInspector entryId="7FTmTrqbWsq7wSj" pages={sequencePages} />
 
-**Please note** the modifier used in this spoken will make the player track the quest because we are changing the value of the quests fact. This will always happen when you change the quest facts value.
+**请注意** 在这个对话中使用的修改器会让玩家追踪任务,因为我们正在改变任务事实的值。当你改变任务事实的值时,这种情况总是会发生。
 
-### Sequence result
-Now your pages should look something like this:
+### 序列结果
+现在你的页面应该看起来像这样:
 <EntryDisplay pages={sequencePages} />
 
-## Final result
-Now you have created a quest that requires the player to gather 64 stone after clicking on the npc.
+## 最终结果
+现在你已经创建了一个任务,要求玩家在点击NPC后收集64个石头。
 
 <Player url={require("./assets/gather_quest/gather_quest_result.webm").default} />

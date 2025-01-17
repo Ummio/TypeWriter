@@ -1,54 +1,56 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
-import Player from "@site/src/components/Player";
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import EntrySearch from "@site/src/components/EntrySearch";
-import ActionButton from "@site/src/components/ActionButtons";
 
-# Adding entities
+# 电影场景中的实体
 
-:::info[Before starting]
-It's best to first read [Cinematics](./index.mdx) before starting this tutorial.
+:::info[开始之前]
+建议先阅读[电影场景](./index.mdx)再开始本教程。
 :::
-:::danger[Entity Extension]
-You must have installed the Entity Extension before starting this tutorial.
-:::
-In this tutorial, you will learn how to add entities to your interactions.
 
-## Adding an entity
-Firstly click on the + icon in the top right corner of the panel and search for `Add Entity Cinematic`. Add it to your page by clicking on the + icon.
+在本教程中,你将学习如何在电影场景中添加实体。
+
+## 添加实体电影场景
+
+首先,我们需要添加一个实体电影场景条目。点击面板右上角的 + 图标并搜索 `Add Entity Cinematic`。通过点击 + 图标将其添加到你的页面。
 
 <EntrySearch entryName='entity_cinematic'/>
-### Selecting the definition
-Now in the inspector, click on `Select a entity_definition` and select the type of entity you want to have as an NPC, but for this tutorial, we will use the `Add Npc Definition`. Now you will need to select a manifest page or create one by clicking on `Add manifest`.
 
-<Player url={require("../../assets/cinematics/select-entity-definition.webm").default} />
+### 配置实体电影场景
 
-Then inside that NPC Definition you can follow the [entity-extension](../04-entity-extension/index.mdx) Tutorial to create a Beautiful NPC.
+在检查器中,你需要配置以下字段:
+* **持续时间**: 这是实体电影场景的总持续时间(以刻度为单位)。
+* **实体**: 这是将在电影场景中移动的实体。你可以从下拉菜单中选择一个实体。
+* **路径**: 这是实体将要遵循的路径。
 
-### Adding segments
-Now we need to add a segment to our track. You can do this by clicking in the inspector at Operations on `Add Segment`. This will add a segment to your track.
+让我们将持续时间设置为 `100` (5秒)。
 
-### Configuring the segment
-In the segment, we now need to add an artifact. You can do this by clicking on `Select a entity_cinematic_artifact` and selecting your artifact, or create one by clicking on `Add Entity Cinematic Artifact`. Then select or create your static page.
+### 添加路径点
 
-### Requesting the content mode.
-Now, back on the cinematic page, click on the <ActionButton button='capture'/> icon in the inspector just above the artifact. This will open the content mode in Minecraft. If you like, you can read what the items do in your inventory just by hovering over them with your mouse, but we will just use the book for now.
-By clicking on the book, TypeWriter will start recording your movements and items that you were holding before you requested the content mode.
+现在我们需要添加实体将要遵循的路径点。点击 `Add Path` 按钮添加一个新的路径点。
 
-#### Recording the NPC
-:::warning[Items in inventory]
-The items you were holding before you requested the content mode will be the items that the NPC will be holding.
+你可以通过以下方式添加路径点:
+1. 使用内容模式选择器获取你当前的位置
+2. 手动输入坐标
+
+<Player url={require("../../assets/cinematics/add-entity-path.webm").default} />
+
+### 添加更多路径点
+
+让我们再添加一些路径点来创建一个更有趣的实体移动。
+
+<Player url={require("../../assets/cinematics/add-more-entity-paths.webm").default} />
+
+## 结果
+
+现在,当电影场景播放时,实体将沿着你定义的路径移动。
+
+<Player url={require("../../assets/cinematics/entity-cinematic-result.webm").default}/>
+
+:::tip
+你可以添加多个实体电影场景条目来让多个实体同时移动。
 :::
-<Player url={require("../../assets/cinematics/recording.webm").default}/>
-
-#### Using the playback items
-
-<Player url={require("../../assets/cinematics/playback.webm").default}/>
-
-## result
-Now that you have successfully added the entity, you can view it in your cinematic.
-
-<Player url={require("../../assets/cinematics/cinematic-npc-result.webm").default}/>

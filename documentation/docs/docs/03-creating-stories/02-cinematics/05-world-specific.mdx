@@ -1,39 +1,39 @@
 ---
-dificulty: Normal
+difficulty: 普通
 ---
 
-import Player from "@site/src/components/Player";
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import EntrySearch from "@site/src/components/EntrySearch";
 import ActionButton from "@site/src/components/ActionButtons";
 
-# World Specific Cinematics
-:::info[Before starting]
-It's best to first read [Cinematics](./index.mdx) before starting this tutorial.
+# 世界特定的电影场景
+:::info[开始之前]
+建议先阅读[电影场景](./index.mdx)再开始本教程。
 :::
 
-In this tutorial, you will learn how to create world-specific cinematics. This feature allows you to create 1 cinematic that can be used in multiple worlds.
+在本教程中,你将学习如何创建世界特定的电影场景。此功能允许你创建一个可以在多个世界中使用的电影场景。
 
-## Creating the dynamic variable
-First, we need to create a dynamic variable. This variable will be used to determine which world the player is in. To do this please follow the these steps:
-1. Go to your camera cinematic and click on a segment
-2. Inside the segment at 1 of your paths click on the <ActionButton button='dynamic-variable'/> icon.
-3. Search for `Player World Position Variable` and click on it to add it to your segment.
+## 创建动态变量
+首先我们需要创建一个动态变量。这个变量将用于确定玩家所在的世界。请按照以下步骤操作:
+1. 进入你的摄像机电影场景并点击一个片段
+2. 在片段内的其中一个路径点上点击 <ActionButton button='dynamic-variable'/> 图标。
+3. 搜索 `Player World Position Variable` 并点击它以添加到你的片段。
 
 <EntrySearch entryName='player_world_position_variable'/>
 
-### Configuring the dynamic variable
-:::warning[repeat]
-Repeat this step for all paths inside the camera cinematic segment.
+### 配置动态变量
+:::warning[重复]
+对摄像机电影场景片段内的所有路径点重复此步骤。
 :::
-Now inside the inspector of the **camera cinematic segment** you can set the coordinates of your cinematic.
-<Image img={require("../../assets/cinematics/world-specific-player-variable.png")} alt="Configuring the dynamic variable" width={400} />
-#### Where is the world value?
-Good question, the world value is gone because we are using the `Player World Position Variable` to determine the world.\
-The world the player is in will be the world used.
+现在在**摄像机电影场景片段**的检查器中,你可以设置电影场景的坐标。
+<Image img={require("../../assets/cinematics/world-specific-player-variable.png")} alt="配置动态变量" width={400} />
+#### 世界值在哪里?
+好问题,世界值不见了是因为我们正在使用 `Player World Position Variable` 来确定世界。\
+玩家所在的世界将是使用的世界。
 
-## Result
-:::info[Entity]
-For this guide we used an entity cinematic from the [entities](./03-entities.mdx) tutorial and an [actionbar dialogue](./01-dialogue.mdx). This is to demonstration the use of the dynamic variable.
+## 结果
+:::info[实体]
+对于本指南,我们使用了来自[实体](./03-entities.mdx)教程的实体电影场景和[动作栏对话](./01-dialogue.mdx)。这是为了演示动态变量的使用。
 :::
 <Player url={require("../../assets/cinematics/world-specific.webm").default} />

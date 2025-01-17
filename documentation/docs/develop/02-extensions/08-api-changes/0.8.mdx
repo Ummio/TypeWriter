@@ -1,21 +1,21 @@
 ---
-title: 0.8.X API Changes
+title: 0.8.X API 变更
 ---
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-# All API changes to 0.8.X
+# 0.8.X 版本的所有 API 变更
 
-There are quite a few changes to the API.
-Make sure to read these changes before updating your extension.
+API 有很多变化。
+在更新扩展之前，请务必阅读这些变更。
 
-## `build.gradle.kts` Changes
+## `build.gradle.kts` 变更
 
-Now the engine version is not specified in a seperate `engine` block, but in the `extension` block.
+现在引擎版本不再在单独的 `engine` 块中指定，而是在 `extension` 块中指定。
 
 <Tabs>
-    <TabItem value="release" label="Release" default>
+    <TabItem value="release" label="正式版" default>
         ```kotlin title="build.gradle.kts" showLineNumbers
         import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
         plugins {
@@ -25,28 +25,28 @@ Now the engine version is not specified in a seperate `engine` block, but in the
             // highlight-green
             id("com.typewritermc.module-plugin") version "1.1.2"
         }
-        // Replace with your own information
+        // 替换为你自己的信息
         group = "me.yourusername"
         version = "0.0.1"
         typewriter {
         // highlight-red-start
             engine {
-                version = "<latest typewriter version>"
+                version = "<最新的 typewriter 版本>"
             }
         // highlight-red-end
 
-            namespace = "<a name for the company which all your extensions are published under>"
+            namespace = "<你所有扩展发布所用的公司名称>"
 
             extension {
-                name = "<Name of the extension>"
-                shortDescription = "<Short description of the extension>"
-                description = "<Long description of the extension>"
+                name = "<扩展名称>"
+                shortDescription = "<简短描述>"
+                description = "<详细描述>"
                 // highlight-green
-                engineVersion = "<latest typewriter version>"
+                engineVersion = "<最新的 typewriter 版本>"
 
                 paper {
-                    // Optional - If you want to make sure a plugin is required to be installed to use this extension
-                    dependency("<plugin name>")
+                    // 可选 - 如果你想确保某个插件必须安装才能使用此扩展
+                    dependency("<插件名称>")
                 }
             }
         }
@@ -55,7 +55,7 @@ Now the engine version is not specified in a seperate `engine` block, but in the
         }
         ```
     </TabItem>
-    <TabItem value="beta" label="Beta">
+    <TabItem value="beta" label="测试版">
         ```kotlin title="build.gradle.kts" showLineNumbers
         import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
         plugins {
@@ -65,31 +65,31 @@ Now the engine version is not specified in a seperate `engine` block, but in the
             // highlight-green
             id("com.typewritermc.module-plugin") version "1.1.2"
         }
-        // Replace with your own information
+        // 替换为你自己的信息
         group = "me.yourusername"
         version = "0.0.1"
         typewriter {
         // highlight-red-start
             engine {
-                version = "<latest typewriter version>"
+                version = "<最新的 typewriter 版本>"
                 channel = com.typewritermc.moduleplugin.ReleaseChannel.BETA
             }
         // highlight-red-end
 
-            namespace = "<a name for the company which all your extensions are published under>"
+            namespace = "<你所有扩展发布所用的公司名称>"
 
             extension {
-                name = "<Name of the extension>"
-                shortDescription = "<Short description of the extension>"
-                description = "<Long description of the extension>"
+                name = "<扩展名称>"
+                shortDescription = "<简短描述>"
+                description = "<详细描述>"
                 // highlight-green-start
-                engineVersion = "<latest typewriter version>"
+                engineVersion = "<最新的 typewriter 版本>"
                 channel = com.typewritermc.moduleplugin.ReleaseChannel.BETA
                 // highlight-green-end
                  
                 paper {
-                    // Optional - If you want to make sure a plugin is required to be installed to use this extension
-                    dependency("<plugin name>")
+                    // 可选 - 如果你想确保某个插件必须安装才能使用此扩展
+                    dependency("<插件名称>")
                 }
             }
         }
@@ -100,9 +100,9 @@ Now the engine version is not specified in a seperate `engine` block, but in the
     </TabItem>
 </Tabs>
 
-## `Initializable` Changes
+## `Initializable` 变更
 
-The way to register a `Initializable` has changed.
+注册 `Initializable` 的方式已更改。
 
 ```kotlin showLineNumbers
 // highlight-red
@@ -111,20 +111,20 @@ The way to register a `Initializable` has changed.
 @Singleton
 object ExampleInitializer : Initializable {
     override suspend fun initialize() {
-        // Do something when the extension is initialized
+        // 当扩展初始化时执行某些操作
     }
 
     override suspend fun shutdown() {
-        // Do something when the extension is shutdown
+        // 当扩展关闭时执行某些操作
     }
 }
 
 ```
 
-## Triggering Entries Changes
+## 触发条目变更
 
-Since Typewriter now has `InteractionContext`, this needs to be passed around when triggering entries.
-As a lot changed, have a look at the [Triggering Entries](../triggering) page for more information.
+由于 Typewriter 现在有了 `InteractionContext`，在触发条目时需要传递这个参数。
+由于变化很多，请查看[触发条目](../triggering)页面了解更多信息。
 
 ```kotlin showLineNumbers
 val entries: List<TriggerableEntry> = ...
@@ -135,12 +135,12 @@ entries triggerAllFor player
 entries.triggerAllFor(player, context())
 ```
 
-## ActionEntry Changes
+## ActionEntry 变更
 
-As the `ActionEntry` now needs a `InteractionContext`, the `execute` function signature has changed.
+由于 `ActionEntry` 现在需要 `InteractionContext`，`execute` 函数的签名已更改。
 
 ```kotlin showLineNumbers
-@Entry("example_action", "An example action entry.", Colors.RED, "material-symbols:touch-app-rounded")
+@Entry("example_action", "一个示例动作条目", Colors.RED, "material-symbols:touch-app-rounded")
 class ExampleActionEntry(
     override val id: String = "",
     override val name: String = "",
@@ -150,23 +150,23 @@ class ExampleActionEntry(
 ) : ActionEntry {
     // highlight-red-start
     override fun execute(player: Player) {
-        super.execute(player) // This will apply all the modifiers.
+        super.execute(player) // 这将应用所有修改器
     // highlight-red-end
     // highlight-green-start
     override fun ActionTrigger.execute() {
-        // Will now automatically apply all the modifiers.
+        // 现在会自动应用所有修改器
     // highlight-green-end
-        // Do something with the player
+        // 对玩家执行某些操作
     }
 }
 ```
 
-## Removal of `CustomTriggeringActionEntry`
+## 移除 `CustomTriggeringActionEntry`
 
-As the action entry now can specify itself how Typewriter should handle the triggering:
+由于动作条目现在可以自己指定 Typewriter 应如何处理触发：
 
 ```kotlin showLineNumbers
-@Entry("example_action", "An example action entry.", Colors.RED, "material-symbols:touch-app-rounded")
+@Entry("example_action", "一个示例动作条目", Colors.RED, "material-symbols:touch-app-rounded")
 class ExampleCustomTriggeringActionEntry(
     override val id: String = "",
     override val name: String = "",
@@ -177,38 +177,38 @@ class ExampleCustomTriggeringActionEntry(
     override val customTriggers: List<Ref<TriggerableEntry>> = emptyList(),
 ) : CustomTriggeringActionEntry {
     override fun execute(player: Player) {
-        super.execute(player) // This will apply the modifiers.
-        // Do something with the player
-        player.triggerCustomTriggers() // Can be called later to trigger the next entries.
+        super.execute(player) // 这将应用修改器
+        // 对玩家执行某些操作
+        player.triggerCustomTriggers() // 可以稍后调用来触发下一个条目
     // highlight-red-end
 // highlight-green-start
     override val triggers: List<Ref<TriggerableEntry>> = emptyList(),
 ) : ActionEntry {
  override fun ActionTrigger.execute() {
-        // This disables Typewriter's automatic triggering of the next entries,
-        // and disables the automatic apply of the modifiers.
+        // 这将禁用 Typewriter 自动触发下一个条目，
+        // 并禁用自动应用修改器
         disableAutomaticTriggering()
 
-        // Now you can manually trigger the next entries.
+        // 现在你可以手动触发下一个条目
         triggerManually()
 
-        // Or if you want to specify which triggers to trigger, you can do so.
+        // 或者如果你想指定要触发哪些触发器，也可以这样做
         triggers.filterIndexed { index, _ -> index % 2 == 0 }.triggerFor(player)
 
-        // You can also manually apply the modifiers.
+        // 你也可以手动应用修改器
         applyModifiers()
         // highlight-green-end
     }
 }
 ```
 
-## Dialogue Messenger Changes
+## 对话信使变更
 
-As it was the only place in Typewriter where you had to register something with an annotation, we changed it to allow the DialogueEntry to specify the messengers that it uses.
-Additionally, we now need to forward the `context` parameter to the messengers.
+由于这是 Typewriter 中唯一需要使用注解注册的地方，我们改变了它，允许 DialogueEntry 指定它使用的信使。
+此外，我们现在需要将 `context` 参数转发给信使。
 
 ```kotlin showLineNumbers
-@Entry("example_dialogue", "An example dialogue entry.", Colors.BLUE, "material-symbols:chat-rounded")
+@Entry("example_dialogue", "一个示例对话条目", Colors.BLUE, "material-symbols:chat-rounded")
 class ExampleDialogueEntry(
     override val id: String = "",
     override val name: String = "",
@@ -219,13 +219,13 @@ class ExampleDialogueEntry(
     @MultiLine
     @Placeholder
     @Colored
-    @Help("The text to display to the player.")
+    @Help("显示给玩家的文本")
     val text: String = "",
 ) : DialogueEntry {
     // highlight-green-start
-    // May return null to skip the dialogue
+    // 可以返回 null 以跳过对话
     override fun messenger(player: Player, context: InteractionContext): DialogueMessenger<*>? {
-        // You can use if statements to return a different messenger depending on different conditions
+        // 你可以使用 if 语句根据不同条件返回不同的信使
         return ExampleDialogueDialogueMessenger(player, context, this)
     }
     // highlight-green-end
@@ -246,15 +246,15 @@ class ExampleDialogueDialogueMessenger(player: Player, context: InteractionConte
 // highlight-green-end
 
 
-    // Called every game tick (20 times per second).
-    // The cycle is a parameter that is incremented every tick, starting at 0.
+    // 每个游戏刻（每秒20次）调用。
+    // cycle 参数从0开始，每刻递增。
     override fun tick(context: TickContext) {
         super.tick(context)
         if (state != MessengerState.RUNNING) return
 
         player.sendMessage("${entry.speakerDisplayName}: ${entry.text}".parsePlaceholders(player).asMini())
 
-        // When we want the dialogue to end, we can set the state to FINISHED.
+        // 当我们想要结束对话时，可以将状态设置为 FINISHED
         state = MessengerState.FINISHED
     }
 }

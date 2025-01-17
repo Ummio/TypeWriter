@@ -1,63 +1,63 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
 import RiveBoard from "@site/src/components/RiveBoard";
 
-# Audience Entries
+# 受众条目
 
-Audience entries are a specific type of [Manifest Entry](./Manifest) that is used to conditionally display content to a group of players.
-Players can be in the audience of an entry.
-In other words, the content of an audience entry will be displayed to the players in its audience.
+受众条目是一种特殊类型的[清单条目](./Manifest),用于有条件地向一组玩家显示内容。
+玩家可以在条目的受众中。
+换句话说,受众条目的内容将显示给其受众中的玩家。
 
-There are two types of Audience entries:
+受众条目有两种类型:
 
-### Audience Display Entry
+### 受众显示条目
 
-The Audience Display is meant to display content to a group of players.
-It can be things like: applying a potion effect, or showing a boss bar.
+受众显示用于向一组玩家显示内容。
+可以是诸如:应用药水效果,或显示Boss血条等内容。
 
-### Audience Filter Entry
+### 受众过滤条目
 
-Audience Filter entries have a list of children that can include both Audience entries and Audience Filter entries.
-They are used as a way to filter the audience of an Audience Display Entry.
+受众过滤条目有一个子条目列表,可以包含受众条目和受众过滤条目。
+它们用作过滤受众显示条目受众的一种方式。
 
-Audience Filters can both:
+受众过滤器可以:
 
-#### Filter Players
-Filter the audience of itself and its children. Like the `CriteriaAudience`, where players are allowed to be in the audience if they meet the criteria.
+#### 过滤玩家
+过滤自身及其子条目的受众。比如`标准受众`,只有满足标准的玩家才能进入受众。
 
-#### Display Content
-Display content just like a normal Audience Display Entry, but use the children for the content on what to display. Like the `Sidebar` does with `Lines` entries.
+#### 显示内容
+像普通的受众显示条目一样显示内容,但使用子条目作为显示内容。就像`侧边栏`使用`行`条目那样。
 
 
-# How does filtering work?
+# 过滤是如何工作的?
 
-When a player joins the server, they are added to all of the root audience entries.
-A root audience entry is an entry that has no parents.
+当玩家加入服务器时,他们会被添加到所有根受众条目中。
+根受众条目是没有父条目的条目。
 
-## Root Entries
+## 根条目
 
 <RiveBoard stateMachines="State Machine 1" artboard="Roots" aspectRatio={500/300} src={require('./assets/audience_entries.riv').default} />
 
 
-As seen above, any entry that has no parents is a root entry.
-The filters can still allow or deny players from being in their own audience. 
-However, if nothing is linked, they don't influence the audience of other entries.
+如上所示,任何没有父条目的条目都是根条目。
+过滤器仍然可以允许或拒绝玩家进入它们自己的受众。
+但是,如果没有链接,它们不会影响其他条目的受众。
 
-## Chaining
+## 链接
 
-We can chain filter together to create a more complex filter.
-Now the player is in the `Display` only if both conditions are met.
+我们可以将过滤器链接在一起以创建更复杂的过滤器。
+现在玩家只有在同时满足两个条件时才会在`显示`中。
 
 <RiveBoard stateMachines="State Machine 1" artboard="Chained" aspectRatio={500/350} src={require('./assets/audience_entries.riv').default} />
 
-Try turning on and off some conditions and see what happens.
+尝试打开和关闭一些条件,看看会发生什么。
 
-## Multiple Parents
+## 多个父条目
 
-When an entry has multiple parents, the player is in the audience of the entry if any of the parents allow the player to be in the audience.
+当一个条目有多个父条目时,如果任何一个父条目允许玩家进入受众,玩家就会在该条目的受众中。
 
 <RiveBoard stateMachines="State Machine 1" artboard="Or" aspectRatio={500/310} src={require('./assets/audience_entries.riv').default} />
 
-Try turning on and off some conditions and see what happens.
+尝试打开和关闭一些条件,看看会发生什么。

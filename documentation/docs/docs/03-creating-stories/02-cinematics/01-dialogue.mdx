@@ -1,35 +1,45 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
-import Player from "@site/src/components/Player"; 
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import EntrySearch from "@site/src/components/EntrySearch";
 
-# Adding dialogues
+# 电影场景中的对话
 
-:::info[Before starting]
-It's best to first read [Cinematics](./index.mdx) before starting this tutorial.
+:::info[开始之前]
+建议先阅读[电影场景](./index.mdx)再开始本教程。
 :::
-In this tutorial, you will learn how to add dialogues to your interactions.
 
-## Adding a dialogue
-In cinematic their are a variety of dialogues available like: `spoken`, `actionbar`, `title`, `subtitle`. For this tutorial we will use actionbar but all others have similar features.
+在本教程中,你将学习如何在电影场景中添加对话。
 
-First click on the + icon in the top right corner of the panel and search for `Add Actionbar Dialogue Cinematic`. Add it to your page by clicking on the + icon.
-<EntrySearch entryName='actionbar_dialogue_cinematic'/>
+## 添加对话
 
-### Configuring the dialogue
-Now we need to configure the dialogue. 
+首先,我们需要添加一个动作栏对话条目。点击面板右上角的 + 图标并搜索 `Add Action Bar Dialogue`。通过点击 + 图标将其添加到你的页面。
 
-First we need to add a [speaker](../01-interactions/index.mdx#configuring-the-speaker) to the dialogue. After that we need to add a segment this can be done by going to the operations and clicking on `Add Segment`.
+<EntrySearch entryName='action_bar_dialogue'/>
 
-### Configuring the dialogue segment
-Now inside the segment you can go to the Text field and adding a text like `<white>This is a cool actionbar text!</white>`.
+### 配置对话
 
-<Image img={require("../../assets/cinematics/adding-dialogue-segment.png")} alt="Adding a dialogue segment" width={400} />
+在检查器中,你需要配置以下字段:
+* **文本**: 这是将显示在动作栏中的文本。
+* **开始帧**: 这是对话开始显示的帧。
+* **结束帧**: 这是对话停止显示的帧。
 
-## Result
-Now you have successfully added the dialogue you can view it in your cinematic.
+<Image img={require("../../assets/cinematics/action-bar-dialogue.png")} alt="配置动作栏对话" width={400} />
 
-<Player url={require("../../assets/cinematics/adding-dialogue-cinematic.webm").default} />
+## 结果
+
+现在,当电影场景播放时,对话将在指定的帧范围内显示在动作栏中。
+
+<Player url={require("../../assets/cinematics/action-bar-dialogue-result.webm").default}/>
+
+## 其他对话类型
+
+除了动作栏对话外,还有其他类型的对话可以在电影场景中使用:
+* **聊天对话**: 在聊天栏中显示对话。
+* **标题对话**: 在屏幕中央显示大标题。
+* **副标题对话**: 在屏幕中央显示小标题。
+
+这些对话类型的配置方式与动作栏对话相同。

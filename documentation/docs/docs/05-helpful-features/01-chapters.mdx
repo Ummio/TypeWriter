@@ -1,25 +1,24 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
 import Player from "@site/src/components/Player";
 import Image from "@site/src/components/Image";
 
-# Chapters
+# 章节
 
-Chapters add a touch of convenience to your typewriter workflow, resembling the familiar structure of chapters in a book. Similar to files forming folders on a PC, TypeWriter's chapter system organizes pages within chapters.
+章节为你的 TypeWriter 工作流程增添了便利性，类似于书本中章节的熟悉结构。就像电脑中文件形成文件夹一样，TypeWriter 的章节系统将页面组织在章节中。
 
-### Setting Chapters
-Easily create a chapter by right-clicking on a page and selecting `Change Chapter`. Enter the desired chapter name and click `Change`.
+### 设置章节
+创建章节非常简单，只需右键点击一个页面并选择`更改章节`。输入想要的章节名称，然后点击`更改`即可。
 <Player url={require("../assets/chapters/chapters.webm").default} />
 
-### Setting Sub-Chapters
-Creating subchapters is super simple. Simply use the main chapter name and add a `.` for example, `hello.test` will generate a sub-chapter. As shown below:
+### 设置子章节
+创建子章节也非常简单。只需使用主章节名称并添加一个`.`，例如，`hello.test` 将生成一个子章节。如下所示：
 
-<Image img={require("../assets/chapters/sub-chapters.png")} alt="Subchapters" width={400} />
+<Image img={require("../assets/chapters/sub-chapters.png")} alt="子章节" width={400} />
 
-
-Feel free to extend the story with as many subchapters as needed. For instance, `hello.test.morning` would work to. TypeWriter automatically collects pages with the same chapter name and groups them together.
+你可以根据需要添加任意多的子章节来扩展故事。例如，`hello.test.morning` 也是可以的。TypeWriter 会自动收集具有相同章节名称的页面并将它们组合在一起。
 
 
 

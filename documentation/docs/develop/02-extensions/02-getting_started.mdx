@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: 入门指南
 ---
 
 import CodeSnippet from "@site/src/components/CodeSnippet";
@@ -7,24 +7,24 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-# Creating an Extension
-## Introduction
-Typewriter is a dynamic platform that supports the development of extensions, which are modular components enhancing the overall functionality.
-Extensions are self-contained, easily shareable, and integrate smoothly into the TypeWriter system.
-They allow you to create custom entries and have them show up in the web panel.
-This guide is tailored to guide you through the process of creating an extension.
+# 创建扩展
+## 简介
+Typewriter 是一个动态平台，支持扩展开发，这些扩展是用于增强整体功能的模块化组件。
+扩展是独立的、易于共享的，并且能够无缝集成到 TypeWriter 系统中。
+它们允许你创建自定义条目并在网页面板中显示。
+本指南旨在指导你完成创建扩展的过程。
 
-## Prerequisites
- - Java Development Kit (JDK) 21 or higher.
- - An Integrated Development Environment (IDE) such as IntelliJ IDEA or Eclipse.
- - A basic understanding of Gradle and the Spigot API.
+## 前置要求
+ - Java 开发工具包 (JDK) 21 或更高版本
+ - 集成开发环境 (IDE)，如 IntelliJ IDEA 或 Eclipse
+ - 对 Gradle 和 Spigot API 的基本了解
 
-## Setting Up a Gradle Project
-Begin by establishing a Gradle project for your Typewriter extension. Below is a comprehensive setup for your Gradle project:
+## 设置 Gradle 项目
+首先为你的 Typewriter 扩展建立一个 Gradle 项目。以下是 Gradle 项目的完整设置：
 
 <Tabs>
-    <TabItem value="release" label="Release" default>
-        Add the following to your `settings.gradle.kts` file:
+    <TabItem value="release" label="正式版" default>
+        在你的 `settings.gradle.kts` 文件中添加以下内容：
         ```kotlin title="settings.gradle.kts" showLineNumbers
         pluginManagement {
             repositories {
@@ -35,31 +35,31 @@ Begin by establishing a Gradle project for your Typewriter extension. Below is a
         }
         ```
 
-        Add the following to your `build.gradle.kts` file:
+        在你的 `build.gradle.kts` 文件中添加以下内容：
         ```kotlin title="build.gradle.kts" showLineNumbers
         import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
         plugins {
             kotlin("jvm") version "2.0.21"
-            id("com.typewritermc.module-plugin") version "<module plugin version>"
+            id("com.typewritermc.module-plugin") version "<模块插件版本>"
         }
 
-        // Replace with your own information
-        group = "me.yourusername"
+        // 替换为你自己的信息
+        group = "me.你的用户名"
         version = "0.0.1"
 
         typewriter {
-            namespace = "<a name for the company which all your extensions are published under>"
+            namespace = "<你所有扩展发布所用的公司名称>"
 
             extension {
-                name = "<Name of the extension>"
-                shortDescription = "<Short description of the extension>"
-                description = "<Long description of the extension>"
-                engineVersion = "<latest typewriter version>"
+                name = "<扩展名称>"
+                shortDescription = "<简短描述>"
+                description = "<详细描述>"
+                engineVersion = "<最新的 typewriter 版本>"
 
                 paper {
-                    // Optional - If you want to make sure a plugin is required to be installed to use this extension
-                    dependency("<plugin name>")
+                    // 可选 - 如果你想确保某个插件必须安装才能使用此扩展
+                    dependency("<插件名称>")
                 }
             }
         }
@@ -69,8 +69,8 @@ Begin by establishing a Gradle project for your Typewriter extension. Below is a
         }
         ```
     </TabItem>
-    <TabItem value="beta" label="Beta">
-        Add the following to your `settings.gradle.kts` file:
+    <TabItem value="beta" label="测试版">
+        在你的 `settings.gradle.kts` 文件中添加以下内容：
         ```kotlin title="settings.gradle.kts" showLineNumbers
         pluginManagement {
             repositories {
@@ -81,28 +81,28 @@ Begin by establishing a Gradle project for your Typewriter extension. Below is a
         }
         ```
 
-        Add the following to your `build.gradle.kts` file:
+        在你的 `build.gradle.kts` 文件中添加以下内容：
         ```kotlin title="build.gradle.kts" showLineNumbers
         import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
         plugins {
             kotlin("jvm") version "2.0.21"
-            id("com.typewritermc.module-plugin") version "<module plugin version>"
+            id("com.typewritermc.module-plugin") version "<模块插件版本>"
         }
         
         typewriter {
-            namespace = "<a name for the company which all your extensions are published under>"
+            namespace = "<你所有扩展发布所用的公司名称>"
 
             extension {
-                name = "<Name of the extension>"
-                shortDescription = "<Short description of the extension>"
-                description = "<Long description of the extension>"
-                engineVersion = "<latest typewriter version>"
+                name = "<扩展名称>"
+                shortDescription = "<简短描述>"
+                description = "<详细描述>"
+                engineVersion = "<最新的 typewriter 版本>"
                 channel = com.typewritermc.moduleplugin.ReleaseChannel.BETA
 
                 paper {
-                    // Optional - If you want to make sure a plugin is required to be installed to use this extension
-                    dependency("<plugin name>")
+                    // 可选 - 如果你想确保某个插件必须安装才能使用此扩展
+                    dependency("<插件名称>")
                 }
             }
         }
@@ -114,25 +114,25 @@ Begin by establishing a Gradle project for your Typewriter extension. Below is a
     </TabItem>
 </Tabs>
 
-:::info Replace your information
-Ensure to replace placeholders like `me.yourusername` with your project details.
+:::info 替换你的信息
+请确保将诸如 `me.你的用户名` 之类的占位符替换为你的项目详细信息。
 :::
 
-## Building the Extension
-After creating the extension class, build the extension. This can be done by running the `build` Gradle task.
-This will generate a JAR file in the `build/libs` directory. 
-This JAR file can be used as an extension in TypeWriter.
-Place the JAR file in the `plugins/TypeWriter/extensions` directory. 
-Typewriter will automatically load the extension and run it.
+## 构建扩展
+创建扩展类后，构建扩展。这可以通过运行 `build` Gradle 任务来完成。
+这将在 `build/libs` 目录中生成一个 JAR 文件。
+这个 JAR 文件可以作为 TypeWriter 中的扩展使用。
+将 JAR 文件放在 `plugins/TypeWriter/extensions` 目录中。
+Typewriter 将自动加载并运行扩展。
 
-:::tip Reloading Extensions
-You can either restart the Minecraft server or reload Typewriter with `/typewriter reload` to reload the extensions.
+:::tip 重新加载扩展
+你可以重启 Minecraft 服务器或使用 `/typewriter reload` 命令来重新加载扩展。
 :::
 
 
-If any problems occur, check the console for errors and ensure that the extension is properly configured.
-If you need help, join the [Discord server](https://discord.gg/HtbKyuDDBw) and ask for help.
+如果出现任何问题，请检查控制台是否有错误信息，并确保扩展配置正确。
+如果需要帮助，请加入 [Discord 服务器](https://discord.gg/HtbKyuDDBw) 寻求帮助。
 
-## What's Next?
-After creating an extension, you can start adding features to it.
-Check out the [Creating Entries](entries) guide to learn how to add entries to your extension.
+## 下一步是什么？
+创建扩展后，你可以开始向其添加功能。
+查看[创建条目](entries)指南，了解如何向扩展添加条目。

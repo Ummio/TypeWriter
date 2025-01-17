@@ -1,20 +1,21 @@
 ---
-title: Snippets
-difficulty: Normal
+title: 代码片段
+difficulty: 普通
 ---
-# What are Snippets?
 
-Snippets are small pieces of information that the extensions can use. Mostly related with how things are displayed to the users.
-Snippets allow you to customize all sorts of parts of different adpaters. For example, you can customize the way messages are displayed in the `Basic Extension`.
+# 什么是代码片段？
 
-# How do I customize Snippets?
-Snippets can be customized by editing the `plugin/Typewriter/snippets.yml` file.
+代码片段是扩展可以使用的小段信息。主要与内容如何显示给用户有关。
+代码片段允许你自定义不同适配器的各个部分。例如，你可以自定义`基础扩展`中消息的显示方式。
 
-:::info important
-Note that Snippets are only written the first time they are used. So if you want to customize a snippet, you will need to trigger the entry that uses the snippet first.
+# 如何自定义代码片段？
+代码片段可以通过编辑 `plugin/Typewriter/snippets.yml` 文件来自定义。
+
+:::info 重要提示
+请注意，代码片段仅在首次使用时才会被写入。因此，如果你想要自定义某个代码片段，你需要先触发使用该代码片段的条目。
 :::
 
-So for the `Basic Extension`, after the first person reiceves a `MessageDialogueEntry`, the `snippets.yml` file will look like this:
+例如，对于`基础扩展`，当第一个人收到`消息对话条目`后，`snippets.yml` 文件会是这样的：
 
 ```yaml title="plugin/Typewriter/snippets.yml"
 dialogue:
@@ -25,9 +26,9 @@ dialogue:
       <reset><white> <message>
 ```
 
-You can then edit this file to customize the snippet. For example, if you wanted to change the default color of the speaker's name, you could change the `<bold><speaker></bold>` to `<bold><red><speaker></red></bold>`.
+然后你可以编辑这个文件来自定义代码片段。比如，如果你想要更改说话者名字的默认颜色，你可以将 `<bold><speaker></bold>` 改为 `<bold><red><speaker></red></bold>`。
 
-Yaml uses the `|` to indicate that the text is a multi-line string.
+Yaml 使用 `|` 来表示文本是多行字符串。
 
 ```yaml title="plugin/Typewriter/snippets.yml"
 dialogue:
@@ -38,4 +39,5 @@ dialogue:
       <gray> | <bold><speaker></bold><reset><gray> |
       <reset><white> <message>
 ```
-The `|2` indicates that the text is a multi-line string, and has `2` new-lines at the end of the string. If you don't want the new-lines, you can remove the `2` to make it `|`.
+
+`|2` 表示这是一个多行字符串，并且在字符串末尾有 `2` 个换行符。如果你不想要这些换行符，可以删除 `2` 使其变为 `|`。

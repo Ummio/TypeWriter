@@ -1,30 +1,30 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
-import Player from "@site/src/components/Player";
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import EntrySearch from "@site/src/components/EntrySearch";
 
-# Skippable Cinematics
-:::info[Before starting]
-It's best to first read [Cinematics](./index.mdx) before starting this tutorial.
+# 可跳过的电影场景
+:::info[开始之前]
+建议先阅读[电影场景](./index.mdx)再开始本教程。
 :::
-In this tutorial, you will learn how to allow players to skip certain parts of your cinematics.
+在本教程中,你将学习如何允许玩家跳过电影场景的某些部分。
 
-## Adding a skippable cinematic
-Firstly click on the + icon in the top right corner of the panel and search for `Add Skippable Cinematic`. Add it to your page by clicking on the + icon.
+## 添加可跳过的电影场景
+首先点击面板右上角的 + 图标并搜索 `Add Skippable Cinematic`。通过点击 + 图标将其添加到你的页面。
 
 <EntrySearch entryName='skip_cinematic'/>
 
-### Configuring the skippable cinematic
-Inside the inspector of the skip cinematic you can choose between `SNEAK` or `SWAP_HANDS` at the confirmation key field. This key will be the key the player has to press to skip the cinematic. This guide will use the SNEAK key to skip the cinematic.
+### 配置可跳过的电影场景
+在跳过电影场景的检查器中,你可以在确认键字段中选择 `SNEAK` 或 `SWAP_HANDS`。这个键将是玩家需要按下以跳过电影场景的按键。本指南将使用 SNEAK 键来跳过电影场景。
 
-## Adding a skippable part
-Now inside the inspector of the skippable cinematic you can add a new segment by clicking on the `Add segment` text at the operations section. This will create a new segment\
-At the fields Start and End frame you can set the timings you want a player to be able to skip a cinematic. For this guide this will be 0 and 100.
+## 添加可跳过部分
+现在在可跳过电影场景的检查器中,你可以通过点击操作部分的 `Add segment` 文本来添加一个新片段。这将创建一个新片段。
+在开始帧和结束帧字段中,你可以设置玩家可以跳过电影场景的时间。对于本指南,这将是 0 和 100。
 
-## result
-Now you have a skippable cinematic that can be skipped by pressing the key you set in the confirmation key field.
+## 结果
+现在你有了一个可跳过的电影场景,可以通过按下你在确认键字段中设置的键来跳过。
 
 <Player url={require("../../assets/cinematics/skip_cinematic_result.webm").default}/>

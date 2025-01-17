@@ -1,140 +1,140 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import Image from "@site/src/components/Image";
 
-# Facts
+# 事实
 
-Facts are essentially variables. They store information that can be modified by other entries. All facts are numbers and are treated as such.
+事实本质上是变量。它们存储可以被其他条目修改的信息。所有事实都是数字并被视为数字。
 
-The [`Basic Extension`](../../../adapters/BasicAdapter/BasicAdapter.mdx) encompasses numerous facts available for use. However, it's important to note that [`extensions`](../../../adapters/README.mdx) have the capability to further augment the array of available facts.
+[`Basic Extension`](../../../adapters/BasicAdapter/BasicAdapter.mdx) 包含了许多可供使用的事实。但是需要注意的是,[`扩展`](../../../adapters/README.mdx)有能力进一步增加可用事实的数量。
 
-## Why Use Facts?
+## 为什么使用事实?
 
-Facts play a crucial role in dynamic content creation and system behavior customization. Here are some reasons to consider using facts:
+事实在动态内容创建和系统行为自定义中起着关键作用。以下是使用事实的一些原因:
 
-- **Dynamic Quests:** Track player progress in quests by using facts to store and modify completion status.
+- **动态任务:** 通过使用事实来存储和修改完成状态来跟踪玩家在任务中的进度。
 
-- **Customization:** Personalize player experiences by utilizing facts to adjust in-game parameters, such as difficulty levels or character attributes.
+- **自定义:** 通过利用事实来调整游戏内参数(如难度等级或角色属性)来个性化玩家体验。
 
-- **Interactive Storytelling:** Enhance narrative elements by employing facts to remember player choices and actions, shaping the evolving story.
+- **互动叙事:** 通过使用事实来记住玩家的选择和行动,塑造不断发展的故事。
 
-- **Achievement Systems:** Implement achievement tracking by using facts to record specific milestones and accomplishments.
+- **成就系统:** 通过使用事实来记录特定里程碑和成就来实现成就跟踪。
 
-### Types of facts
+### 事实类型
 
-Facts have two types: readable and writable.
+事实有两种类型:可读和可写。
 
-- **Readable Facts:** Used in the criteria of an entry. For example, checking if a player has a certain item in their inventory.
-- **Writable Facts:** Used in modifiers to modify the fact's value. For instance, updating a player's quest progression.
+- **可读事实:** 用于条目的条件中。例如,检查玩家背包中是否有某个物品。
+- **可写事实:** 用于修改器中修改事实的值。例如,更新玩家的任务进度。
 
 :::info
-Some facts are both readable and writable. For example, the [permanent fact](../../../adapters/BasicAdapter/entries/fact/permanent_fact) can be used in both criteria and modifiers.
-But some facts are only readable. For example, the [inventory item count fact](../../../adapters/BasicAdapter/entries/fact/inventory_item_count_fact) can only be used in criteria.
+有些事实既可读又可写。例如,[永久事实](../../../adapters/BasicAdapter/entries/fact/permanent_fact)可以在条件和修改器中使用。
+但有些事实只能读取。例如,[物品数量事实](../../../adapters/BasicAdapter/entries/fact/inventory_item_count_fact)只能在条件中使用。
 :::
 
-## Groups
+## 组别
 
-In a fact you can select a group. There are 3 types of groups:
+在事实中你可以选择一个组别。有3种类型的组别:
 
-- **Global**: Sets a fact for all players.
-- **World**: Sets a fact for all players in a specific world.
-- **Player**: Sets a fact for a specific player.
+- **全局**: 为所有玩家设置事实。
+- **世界**: 为特定世界中的所有玩家设置事实。
+- **玩家**: 为特定玩家设置事实。
 
-## Fields
+## 字段
 
-In some entries, there are fields that influence the way facts are handled.
+在某些条目中,有些字段会影响事实的处理方式。
 
-<Image img={require("../../assets/facts/criteria_and_modifier.png")} alt="Criteria and modifiers fields" width={400} />
+<Image img={require("../../assets/facts/criteria_and_modifier.png")} alt="条件和修改器字段" width={400} />
 
-### Criteria
+### 条件
 
-Criteria is the condition for an entry, e.g., `if fact = 10 then...`. It controls whether an entry will occur.
+条件是条目的条件,例如 `如果事实 = 10 那么...`。它控制条目是否会发生。
 
-<Image img={require("../../assets/facts/criteria.png")} alt="Criteria field" width={400} />
+<Image img={require("../../assets/facts/criteria.png")} alt="条件字段" width={400} />
 
-When using criteria, follow these steps:
+使用条件时,请按照以下步骤:
 
-1. Select the fact to check.
-2. Choose the operator.
-3. Insert the value for the operator to check.
+1. 选择要检查的事实。
+2. 选择运算符。
+3. 输入运算符要检查的值。
 
-### Modifiers
+### 修改器
 
-Modifiers, as the name suggests, modify a fact.
+修改器顾名思义就是用来修改事实的。
 
-<Image img={require("../../assets/facts/modifier.png")} alt="Modifier field" width={400} />
+<Image img={require("../../assets/facts/modifier.png")} alt="修改器字段" width={400} />
 
-When using modifiers, follow these steps:
+使用修改器时,请按照以下步骤:
 
-1. Select the fact to modify.
-2. Select the operator. You can change the value directly (=) or add to it (+).
-3. Insert the value for the operator to modify.
+1. 选择要修改的事实。
+2. 选择运算符。你可以直接更改值(=)或添加到值(+)。
+3. 输入运算符要修改的值。
 
 :::warning
-Modifiers only run when the entry is executed.
-If the entry has criteria and **one of the criteria** is `false`, then the entry won't be executed, and the fact won't be modified.
+修改器只在条目执行时运行。
+如果条目有条件且**其中一个条件**为`false`,那么条目不会被执行,事实也不会被修改。
 :::
 
-## Tutorial
+## 教程
 
-To get you started with facts, we will use a permanent fact to track progression in a quest.
+为了帮助你开始使用事实,我们将使用永久事实来跟踪任务中的进度。
 
-1. Create a new page and select it as `static`. Give it the name `Playerprogress`
-2. Click on the + icon and select `Add Permanent Fact`. Rename it to `Playerprogress` and give it a nice comment.
-    <Image img={require("../../assets/facts/static-page.png")} alt="Static page button" />
-3. Select the player group.
-4. On the sequence page, click on an action.
-   - Set a **Criteria:** Check if `Playerprogress` == 0.
-   - Set a **Modifier:** If criteria are met, update `Playerprogress` to 1.
-5. Create additional actions to represent different quest stages, modifying `Playerprogress` accordingly.
+1. 创建一个新页面并选择为`static`。将其命名为`Playerprogress`
+2. 点击 + 图标并选择`Add Permanent Fact`。将其重命名为`Playerprogress`并添加一个好的注释。
+    <Image img={require("../../assets/facts/static-page.png")} alt="静态页面按钮" />
+3. 选择玩家组别。
+4. 在序列页面上,点击一个动作。
+   - 设置**条件:** 检查 `Playerprogress` == 0。
+   - 设置**修改器:** 如果条件满足,将 `Playerprogress` 更新为 1。
+5. 创建额外的动作来表示不同的任务阶段,相应地修改 `Playerprogress`。
 
-## Examples
+## 示例
 
-There are many possibilities with the fact's system. Here are some examples:
+事实系统有很多可能性。以下是一些示例:
 
 <Tabs groupId="example" queryString>
-   <TabItem value="Gathering Items Quest" label="Gathering Items Quest" default>
-      **Objective:** A player talks to an NPC and needs to gather items.
+   <TabItem value="Gathering Items Quest" label="收集物品任务" default>
+      **目标:** 玩家与NPC对话并需要收集物品。
 
-      **Fact Used:**
-      - **Readable Fact:** [Inventory Item Count](../../../adapters/BasicAdapter/entries/fact/inventory_item_count_fact)
+      **使用的事实:**
+      - **可读事实:** [物品数量](../../../adapters/BasicAdapter/entries/fact/inventory_item_count_fact)
 
-      **Scenario:**
-      1. The player talks to the NPC.
-      2. Check the criteria using the Inventory Item Count Fact to verify if the player has the required items.
-
-   </TabItem>
-   <TabItem value="Progression Tracking" label="Progression Tracking">
-      **Objective:** Track a player's progression through different quest stages.
-
-      **Fact Used:**
-      - **Writable Fact:** [Permanent Fact](../../../adapters/BasicAdapter/entries/fact/permanent_fact)
-
-      **Scenario:**
-      1. The player talks to an NPC (progression set to 1).
-      2. Completes a specific action (progression set to 2).
-      3. Finishes the quest (progression set to 3).
+      **场景:**
+      1. 玩家与NPC对话。
+      2. 使用物品数量事实检查条件,验证玩家是否有所需物品。
 
    </TabItem>
-   <TabItem value="Balance check" label="Balance check">
-      **Objective:** See if a player has enough money to buy an item.
+   <TabItem value="Progression Tracking" label="进度跟踪">
+      **目标:** 跟踪玩家通过不同任务阶段的进度。
 
-      **Fact Used:**
-      - **Readable Fact:** [Balance Fact](../../../adapters/VaultAdapter/entries/fact/balance_fact.mdx)
+      **使用的事实:**
+      - **可写事实:** [永久事实](../../../adapters/BasicAdapter/entries/fact/permanent_fact)
 
-      **Scenario:**
-      1. The player talks to an NPC.
-      2. Check the criteria using the balance fact to see if the player has enough balance.
-      3. If the player has enough balance, they can buy the item.
-      4. If the player doesn't have enough balance, show a message to the player.
+      **场景:**
+      1. 玩家与NPC对话(进度设为1)。
+      2. 完成特定动作(进度设为2)。
+      3. 完成任务(进度设为3)。
+
+   </TabItem>
+   <TabItem value="Balance check" label="余额检查">
+      **目标:** 查看玩家是否有足够的钱购买物品。
+
+      **使用的事实:**
+      - **可读事实:** [余额事实](../../../adapters/VaultAdapter/entries/fact/balance_fact.mdx)
+
+      **场景:**
+      1. 玩家与NPC对话。
+      2. 使用余额事实检查条件,查看玩家是否有足够的余额。
+      3. 如果玩家有足够的余额,他们可以购买物品。
+      4. 如果玩家没有足够的余额,向玩家显示一条消息。
 
    </TabItem>
 </Tabs>
 
 :::tip
-To see all the available facts, check out the [Extensions section](../../../adapters/README.mdx).
+要查看所有可用的事实,请查看[扩展部分](../../../adapters/README.mdx)。
 :::

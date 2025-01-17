@@ -1,50 +1,50 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
 import Image from "@site/src/components/Image";
 import Player from "@site/src/components/Player";
 
-# Conditional dialogue
-:::info[Before starting]
-It's best to first read [First Interaction](./index.mdx) [Facts](../03-facts/index.mdx) before starting this tutorial.
-Also, make sure you have created a **sequence** page.
+# 条件对话
+:::info[开始之前]
+建议先阅读[第一个交互](./index.mdx)和[事实系统](../03-facts/index.mdx)教程再开始本教程。
+同时,确保你已经创建了一个**序列**页面。
 :::
 
-In this tutorial, you will learn how to create conditional dialogue. This means that if the player has a certain fact set to a specific value, it will then display the correct dialogue.
+在本教程中,你将学习如何创建条件对话。这意味着如果玩家的某个事实值设置为特定值,就会显示相应的对话。
 
-## Adding a spoken
-First we need to add a spoken. This can be learned by following the [First Interaction](./index.mdx) tutorial.
+## 添加对话
+首先我们需要添加一个对话。这可以通过学习[第一个交互](./index.mdx)教程来完成。
 
-## Configuring the spoken
-In the spoken we will set the field text to `Hey you clicked me for the first time.`
+## 配置对话
+在对话中,我们将文本字段设置为`嘿,这是你第一次点击我。`
 
-### Setting the Criteria
-Now we need to configure the criteria for the spoken. This can be done by clicking on the + icon in the inspector next to the criteria field. Then, you can select the fact you want to use. For this tutorial, we will use a permanent fact called `Flower Clicked` with the group set to a player group.
+### 设置条件
+现在我们需要为对话配置条件。这可以通过点击检查器中条件字段旁边的+图标来完成。然后,你可以选择想要使用的事实。在本教程中,我们将使用一个名为`Flower Clicked`(花朵点击)的永久事实,并将组设置为玩家组。
 
-<Image img={require("../../assets/interactions/flower-clicked-fact.png")} alt="Flower Clicked Fact" width={400}/>
+<Image img={require("../../assets/interactions/flower-clicked-fact.png")} alt="花朵点击事实" width={400}/>
 
-Inside the criteria, set the operator to `==` and the value to `0`.
+在条件内,将运算符设置为`==`,值设置为`0`。
 
-### Configuring the Modifier
-You have configured the criteria, but now we need to modify the fact so that when you click the flower again, a different spoken is displayed. This can be done by clicking on the + icon in the inspector next to the modifier field. Then, you can select the fact you want to modify. For this tutorial, we will use the same fact as the criteria. Inside the modifier, set the operator to `=` and the value to `1`.
+### 配置修改器
+你已经配置了条件,但现在我们需要修改事实,这样当你再次点击花朵时,会显示不同的对话。这可以通过点击检查器中修改器字段旁边的+图标来完成。然后,你可以选择想要修改的事实。在本教程中,我们将使用与条件相同的事实。在修改器内,将运算符设置为`=`,值设置为`1`。
 
-<Image img={require("../../assets/interactions/add-spoken-fields.png")} alt="Add Spoken Fields" width={400}/>
+<Image img={require("../../assets/interactions/add-spoken-fields.png")} alt="添加对话字段" width={400}/>
 
-## Adding the second spoken
-Now we need to add the second spoken. This can be done by right-clicking on the `On Interact Block Event` entry and selecting `+ Link with ...`. Then, search for `Add Spoken` and click on the + icon to add it to your sequence.\
-In the text field we will set `Wow you clicked me again!`
-Your sequence page should look like this:
+## 添加第二个对话
+现在我们需要添加第二个对话。这可以通过右键点击`On Interact Block Event`条目并选择`+ Link with ...`来完成。然后,搜索`Add Spoken`并点击+图标将其添加到你的序列中。\
+在文本字段中,我们将设置`哇,你又点击了我一次!`
+你的序列页面应该看起来像这样:
 
-<Image img={require("../../assets/interactions/conditional-dialogue-sequence.png")} alt="Conditional dialogue sequence" width={400}/>
+<Image img={require("../../assets/interactions/conditional-dialogue-sequence.png")} alt="条件对话序列" width={400}/>
 
-### Configuring the second spoken Criteria
-Now we need to configure the criteria for the second spoken. This can be done by clicking on the + icon in the inspector next to the criteria field. Then, select the `Flower Clicked` fact again. Inside the criteria, set the operator to `==` and the value to `1`.
+### 配置第二个对话的条件
+现在我们需要为第二个对话配置条件。这可以通过点击检查器中条件字段旁边的+图标来完成。然后,选择`Flower Clicked`事实。在条件内,将运算符设置为`==`,值设置为`1`。
 
-### Additional dialogue
-To add more dialogues or interactions when you click the flower, set another modifier with the operator to `=` and the value to `2` (or any other value), then repeat the previous steps.
+### 额外对话
+要在点击花朵时添加更多对话或交互,设置另一个修改器,运算符为`=`,值为`2`(或任何其他值),然后重复前面的步骤。
 
-## Result
-Now, when you click the flower for the first time, the first spoken will be displayed. When you click the flower again, the second spoken will be displayed.
+## 结果
+现在,当你第一次点击花朵时,将显示第一个对话。当你再次点击花朵时,将显示第二个对话。
 
 <Player url={require("../../assets/interactions/final-result-conditional-dialogue.webm").default}/>

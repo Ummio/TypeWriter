@@ -1,37 +1,37 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
-import Player from "@site/src/components/Player";
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import ActionButton from "@site/src/components/ActionButtons";
 import EntrySearch from "@site/src/components/EntrySearch";
 
-# Random Dialogue
-:::info[Before starting]
-This tutorial builds upon the [first interaction](./index.mdx) tutorial. It is also best to first read the [Facts](../03-facts/index.mdx) documentation.
+# 随机对话
+:::info[开始之前]
+本教程基于[第一个互动](./index.mdx)教程。同时最好先阅读[事实](../03-facts/index.mdx)文档。
 :::
 
-In this tutorial, you will learn how to use dynamic variables and create a random spoken using them.
+在本教程中,你将学习如何使用动态变量并创建随机对话。
 
-## Creating random dialogue
-First, you need to open the inspector of the spoken you created from the [first interaction](./index.mdx) tutorial. Then click on the <ActionButton button='dynamic-variable'/> just above the Text field and click on `Add random Variable`. 
+## 创建随机对话
+首先,你需要打开从[第一个互动](./index.mdx)教程创建的对话的检查器。然后点击 Text 字段上方的 <ActionButton button='dynamic-variable'/> 并点击 `Add random Variable`。
 
 <EntrySearch entryName='random_variable' />
 
-This will create a random variable inside a static page.
+这将在静态页面中创建一个随机变量。
 
-## Configuring the random variable
-After creating the random variable, open the inspector of the random variable. Here, you can add multiple values to the random variable. Now, every time a spoken is triggered, a different message will be displayed from that random variable.\
-For this tutorial, we chose to add the following lines, but this can be anything you want:\
+## 配置随机变量
+创建随机变量后,打开随机变量的检查器。在这里,你可以向随机变量添加多个值。现在,每次触发对话时,都会从该随机变量中显示一个不同的消息。\
+对于本教程,我们选择添加以下几行,但这可以是任何你想要的内容:\
 `Hello! I am a flower.`, `Wow, you found me.`, `Hey you!`\
-Your dynamic variable should now look like:
-<Image img={require("../../assets/interactions/random-variable.png")} alt="Random Variable Example" width={400}/>
+你的动态变量现在应该看起来像这样:
+<Image img={require("../../assets/interactions/random-variable.png")} alt="随机变量示例" width={400}/>
 
-## Removing the random variable
-To remove a dynamic variable, just click on the <ActionButton button='remove'/> icon next to the dynamic variable.
+## 移除动态变量
+要移除动态变量,只需点击动态变量旁边的 <ActionButton button='remove'/> 图标。
 
-## Result
-Now, every time the spoken is triggered, a random message will be displayed from the random variable.
+## 结果
+现在,每次触发对话时,都会从随机变量中显示一个随机消息。
 
 <Player url={require("../../assets/interactions/random-dialogue-result.webm").default}/>

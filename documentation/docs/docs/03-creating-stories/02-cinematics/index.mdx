@@ -1,63 +1,84 @@
 ---
-difficulty: Easy
+difficulty: 普通
 ---
 
-import Player from "@site/src/components/Player";
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import EntrySearch from "@site/src/components/EntrySearch";
 
-# Cinematics
+# 电影场景
 
-:::info[Before starting]
-This guide assumes that you have already installed the [Basic Extension](../../02-getting-started/01-installation.mdx#basic-extension).\
-Also, make sure you have read the [layout](../../02-getting-started/02-layout.mdx) documentation and created a **cinematic** page.
+:::info[开始之前]
+本指南假设你已经安装了[Basic Extension](../../02-getting-started/01-installation.mdx#basic-extension)。
+
+同时,请确保你已经阅读了[布局](../../02-getting-started/02-layout.mdx)文档并创建了一个**电影场景**页面。
 :::
 
-In this tutorial, you will learn how to create and view cinematics in your interactions!
+在本教程中,你将学习如何创建电影场景。电影场景是一系列定时的动作,可以用来创建引人入胜的故事情节。
 
-## What are cinematics?
-Cinematics are timed sequences of actions that can be played in your interactions. They are used to create cutscenes or other timed events.
+## 什么是电影场景?
 
-## Creating a cinematic
-Let's get started by creating a simple camera cinematic.
+电影场景是一系列定时的动作,可以用来创建引人入胜的故事情节。它们可以包含多个不同类型的动作,如:
+- 摄像机移动
+- 对话
+- 实体移动
+- 音效
+- 标题
+- 粒子效果
 
-### Adding a camera cinematic
-Firstly click on the + icon in the top right corner of the panel and search for `Add Camera Cinematic`. Add it to your page by clicking on the + icon.
+## 创建电影场景
 
-<EntrySearch entryName='cinematic'/>
+让我们从创建一个简单的电影场景开始。点击面板右上角的 + 图标并搜索 `Add Camera Cinematic`。通过点击 + 图标将其添加到你的页面。
 
-### Creating a segment
-Now we need to add a segment to our track. You can do this by clicking on the `New Camera Cinematic` entry in your page and by operations clicking on `Add Segment`(1).
+<EntrySearch entryName='camera_cinematic'/>
 
-<Image img={require("../../assets/cinematics/segments.png")} alt="Adding a camera cinematic segment" width={400} />
+### 配置电影场景
 
-After you create the segment, you can click on it (2). This opens the inspector of the segment.
+在检查器中,你可以看到以下字段:
+- **持续时间**: 电影场景的总持续时间(以刻度为单位,20刻度 = 1秒)
+- **路径**: 摄像机将要遵循的路径
 
-### Modifying the camera segment
-In a camera cinematic segment, you have a path. Each path contains a list of locations in a world of your server. When multiple locations are specified on a path, the player will move between them. If only one is specified, the player will stay stationary.
-To create a path, click on the + icon in the inspector at `path(0)`.
+让我们将持续时间设置为 `100` (5秒)。
 
-To set a location in a path, you have 2 options: using the content mode or configuring it yourself.
-#### Using the content mode 
-The content mode allows you to get the player's current location and fill in the fields for you.
-<Player url={require("../../assets/cinematics/content-mode.webm").default} />
+### 添加路径点
 
-#### Configuring it yourself
-You can also configure the paths yourself. This can be done by opening the `Path #1` field. In there, you can configure the location of the path. These are:
-* **World**: The world where the cinematic happens.
-* **X**: The x coordinate of the location.
-* **Y**: The y coordinate of the location.
-* **Z**: The z coordinate of the location.
-* **Pitch**: The pitch of the camera.
-* **Yaw**: The yaw of the camera.
+现在我们需要添加摄像机将要遵循的路径点。点击 `Add Path` 按钮添加一个新的路径点。
 
-**Duration**: The duration of the location to the next location in ticks. If not specified, the duration will be calculated based on the left-over duration.\
-For example, if you have a segment of *300* frames with 3 locations, and the 2nd location has a **duration** of *200* frames, the duration from the 1st to the 2nd location will be *100* ticks, and from the 2nd to the 3rd location, *200* ticks.
+你可以通过以下方式添加路径点:
+1. 使用内容模式选择器获取你当前的位置
+2. 手动输入坐标
 
-Repeat this process to make more locations in the path.
+<Player url={require("../../assets/cinematics/add-path.webm").default} />
 
-## result
-For the result we are going to use the example for the duration. You can easily view your cinematic by running the command:\
- `/tw cinematic start (page name)` or adding an `Add cinematic` to a sequence page.
+### 添加更多路径点
 
-<Player url={require("../../assets/cinematics/final-camera-cinematic.webm").default} />
+让我们再添加一些路径点来创建一个更有趣的摄像机移动。
+
+<Player url={require("../../assets/cinematics/add-more-paths.webm").default} />
+
+## 触发电影场景
+
+现在我们已经创建了电影场景,我们需要一种方法来触发它。让我们创建一个序列页面并添加一个互动来触发电影场景。
+
+1. 创建一个新的序列页面
+2. 添加一个 `On Interact With Block` 条目
+3. 添加一个 `Add Cinematic` 条目并将其链接到互动
+4. 在 `Add Cinematic` 条目中选择我们刚刚创建的电影场景
+
+<Player url={require("../../assets/cinematics/add-cinematic-trigger.webm").default} />
+
+## 结果
+
+现在当你点击方块时,电影场景应该会播放:
+
+<Player url={require("../../assets/cinematics/final-result.webm").default} />
+
+## 下一步
+
+现在你已经了解了基本的电影场景创建,你可以:
+- 添加[对话](./01-dialogue.mdx)到你的电影场景中
+- 添加[音效](./02-sounds.mdx)到你的电影场景中
+- 添加[实体](./03-entities.mdx)到你的电影场景中
+- 创建[首次加入](./04-first-join.mdx)电影场景
+- 创建[可跳过的](./05-skippable-cinematics.mdx)电影场景
+- 创建[世界特定的](./05-world-specific.mdx)电影场景

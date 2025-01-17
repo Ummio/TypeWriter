@@ -1,67 +1,41 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
 import Image from "@site/src/components/Image";
 
-# PlaceHolderAPI
+# PlaceholderAPI
 
-:::warning[plugin needed]
-To follow this tutorial, you must have the [PlaceHolderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) installed.
+:::warning[需要插件]
+要使用本教程,你必须安装 [PlaceHolderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) 插件。
 :::
 
-## Use PlaceHolderAPI's Placeholders
+## 使用 PlaceholderAPI 的占位符
 
-If you want to expand your story with PlaceHolderAPI's placeholders, you can do that by checking if the PlaceHolderAPI icon is placed above the text box (see image):
+Typewriter 提供了一些可以在服务器上使用的占位符。这些占位符可以用于显示事实的值或其他信息。
 
-<Image img={require("../assets/placeholderapi/papi-icon.png")} alt="PlaceholderAPI Icon" width={400} />
+### 事实占位符
 
-By just using the PlaceHolderAPI's format, you can make them work. For example, `%player_name%` would give the name of a player.
+要显示一个事实的值,你可以使用以下格式:
+```
+%typewriter_<entry id>%
+```
 
-:::danger[Not working]
-If placeholders are not working, make sure you have the placeholder installed. For instance, with `%player_name%`, you must have installed `player` via the PlaceHolderAPI ecloud. To do this, just run: `/papi ecloud download player`.
-:::
+例如,如果你有一个ID为 `money` 的事实,你可以使用 `%typewriter_money%` 来显示它的值。
 
-## Use TypeWriter's Placeholders
+#### 时间戳
+对于时间戳事实,你可以使用以下占位符:
+- `%typewriter_<entry id>:time:lastUpdated%`: 显示事实最后更新的时间。
+- `%typewriter_<entry id>:time:lastUpdated:relative%`: 显示距离事实最后更新的时间,例如 `3分20秒`。
 
-TypeWriter provides two placeholders for use with the PlaceHolderAPI:
+#### 可过期的事实
 
-- `%typewriter_entryid%`
-- `%typewriter_entryname%`
+对于可过期的事实,你可以使用以下占位符:
+- `%typewriter_<entry id>:time:expires%`: 显示事实过期的时间。
+- `%typewriter_<entry id>:time:expires:relative%`: 显示距离事实过期的时间,例如 `3分20秒`。
 
-Both placeholders provide the same information, but you may choose to access them in different ways. It's generally recommended to use the entry ID for more reliable results, but the entry name is also an option.
+## 自定义占位符
+Typewriter 还有2个自定义占位符,它们是:
 
-To find the entry ID, refer to the following image:
-
-<Image img={require("../assets/placeholderapi/papi-factid.png")} alt="PlaceholderAPI Icon" width={500} />
-
-Your placeholder for TypeWriter would be something like `%typewriter_W2X2ZbG0pzXGsS6%`.\
-Then, when calling the placeholder, it checks the ID and:
-
-- If their entry is a speaker, it gives the displayName back.
-- If their entry is a fact, it gives the fact value back.
-- If the entry is a sound, it gives the ID of the resource pack sound.
-- If the entry is a entity, it gives the displayName of the entity
-- If the entry is a lines entry, it gives the content of the lines entry.
-- If the entry is a quest, it gives the displayName of the quest.
-- If the entry is a objective, it gives the formatted displayName of the objective.
-- If the entry is a sidebar, it gives the title of the sidebar.
-
-### Placeholder Parameters
-Sometimes, you might want to get different information from the entry. This can be done using the placeholder parameters. Here you can find a non-exhaustive list of placeholder parameters:
-
-#### Fact Entries
-- `%typewriter_<entry id>:remaining:<number>%`: Returns `<number> - fact value` (useful when the player needs to gather a certain amount of something and you want to show how many they still need to collect).
-- `%typewriter_<entry id>:time:lastUpdated%`: Shows the time at which the fact was updated.
-- `%typewriter_<entry id>:time:lastUpdated:relative%`: Shows the time since the fact was updated, for example, `3m 20s`.
-
-#### Expirable Facts
-
-- `%typewriter_<entry id>:time:expires%`: The time at which the fact expires.
-- `%typewriter_<entry id>:time:expires:relative%`: Shows the time until the fact expires, for example, `3m 20s`.
-
-## Custom placeholders
-Typewriter also has 2 custom placeholders, these are:
-
-- `%typewriter_tracked_quest%`: Shows the displayName of the currently tracked quest.
-- `%typewriter_tracked_objectives%`: Shows the objectives displayNames for the active objectives of the tracked quest.
+- `%typewriter_tracked_quest%`: 显示当前追踪的任务的显示名称。
+- `%typewriter_tracked_objectives%`: 显示当前追踪的任务的激活目标的显示名称。

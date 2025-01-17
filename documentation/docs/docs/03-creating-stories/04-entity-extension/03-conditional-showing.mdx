@@ -1,5 +1,5 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
 import EntrySearch from "@site/src/components/EntrySearch";
@@ -7,36 +7,35 @@ import Image from "@site/src/components/Image";
 import EntryDisplay from "@site/src/components/EntryDisplay";
 import Player from "@site/src/components/Player";
 
-# Conditional NPC showing
-:::warning[NPC created]
-In this tutorial, we assume you already have created an entity.\
-If you haven't done that yet, please follow the [entity extension tutorial](./index.mdx) first.
+# 条件显示NPC
+:::warning[NPC创建]
+本教程假设你已经创建了一个实体。\
+如果你还没有创建,请先阅读[实体扩展教程](./index.mdx)。
 :::
-In this tutorial, you will learn how to conditionally show an entity using audiences.
+在本教程中,你将学习如何使用受众条目来有条件地显示实体。
 
-## Adding an audience entry
-There are a lot of different audience entries available. For this tutorial, we will use Game Time audience, but all others have similar features.
+## 添加受众条目
+有很多不同类型的受众条目可用。对于本教程,我们将使用游戏时间受众,但所有其他类型都有类似的功能。
 
-
-Firstly, click on the + icon in the top right corner of the panel and search for `New Game Time Audience`. Add it to your page by clicking on the + icon.
+首先,点击面板右上角的 + 图标并搜索 `New Game Time Audience`。通过点击 + 图标将其添加到你的页面。
 
 <EntrySearch entryName="game_time_audience"/>
 
-## Adding it onto your entity instance.
-Now hold your entity instance and drag it onto the `New Game Time Audience` entry. This will link the audience to the entity.
+## 将其添加到你的实体实例上
+现在按住你的实体实例并将其拖到 `New Game Time Audience` 条目上。这将把受众链接到实体。
 
-It should now look something like this:
+现在应该看起来像这样:
 
 <EntryDisplay pages={[
     require("./assets/conditional/manifest.json"),
 ]} />
 
-## Configuring the audience
-Inside the audience entry, there are 2 fields:
-* **Children**: This is where you can add the entities that should be shown when the audience is met.
-* **Active Times**: This will make that the Children of the audience is only showed when this condition is met.
-* **Inverted**: This will invert the audience, meaning that the entity will only be shown when the audience is not met.
+## 配置受众
+在受众条目内,有2个字段:
+* **Children**: 这里你可以添加当满足受众条件时应该显示的实体。
+* **Active Times**: 这将使受众的Children只在满足此条件时显示。
+* **Inverted**: 这将反转受众,意味着实体只在不满足受众条件时显示。
 
-## Result
+## 结果
 
 <Player url={require("../../assets/entity-extension/conditional-npc-result.webm").default} />

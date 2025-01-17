@@ -1,5 +1,5 @@
 ---
-difficulty: Hard
+difficulty: 困难
 ---
 
 import Player from "@site/src/components/Player";
@@ -9,119 +9,119 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Figure from "@site/src/components/Figure";
 
-# Entity Objectives
-:::danger[Quest Extension]
-You must have installed the Quest Extension before starting this tutorial.
+# 实体目标
+:::danger[任务扩展]
+在开始本教程之前,你必须先安装任务扩展。
 :::
-:::info[Before starting]
-We recommend reading the [Questing](./index.mdx) guide before starting this tutorial, as it provides essential background knowledge for understanding [Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx).
+:::info[开始之前]
+我们建议先阅读[任务系统](./index.mdx)指南再开始本教程,因为它提供了理解[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)的基本知识。
 :::
 
-In this tutorial, you'll learn how to create and implement [Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx), a powerful feature that enhances player guidance to Non-Player Characters (NPCs) in your Minecraft Server.
+在本教程中,你将学习如何创建和实现[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx),这是一个强大的功能,可以增强玩家在你的 Minecraft 服务器中与非玩家角色(NPC)的互动引导。
 
-## Understanding [Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)
+## 理解[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)
 
-[Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx) are a specific quest objective that involve player interaction with NPCs.
-These objectives add depth to Typewriters questing system by creating meaningful encounters and dialogues with characters in your world.
-They can range from simple conversations to complex multi-stage interactions that drive your game's narrative forward.
+[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)是特定任务目标,涉及玩家与 NPC 的互动。
+这些目标通过创建与游戏世界中的角色进行有意义对话和互动的机会,为 Typewriters 任务系统增加了深度。
+它们可以简单到对话,也可以复杂到多阶段互动,推动游戏叙事向前发展。
 
-Key benefits of using [Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx) include:
-- Creating more immersive and interactive quest lines
-- Guiding players through the game world in a natural, story-driven manner
-- Providing visual cues to help players identify important NPCs
+使用[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)的优点包括:
+- 创建更身临其境和互动的任务线
+- 以自然、故事驱动的方式引导玩家通过游戏世界
+- 提供视觉提示,帮助玩家识别重要 NPC
 
-## Story Overview
+## 故事概述
 
-Let's create a quest called _**"A Sip of Memories"**_ that showcases the use of entity objectives. This quest will guide the player through interactions with different NPCs to complete a heartwarming task.
+让我们创建一个名为 _**"记忆的一口"**_ 的任务,展示实体目标的使用。这个任务将引导玩家通过与不同 NPC 的互动来完成一个温馨的任务。
 
 <Tabs>
-  <TabItem value="stage1" label="Introduction" default>
+  <TabItem value="stage1" label="介绍" default>
 
-    **Location**: Town square, near a large oak tree
+    **位置**: 城镇广场,靠近一棵大橡树
     
-    **Character**: Elias Thornberry (elderly man)
+    **角色**: Elias Thornberry (老年人)
     
-    **Player Actions**: 
-    - Approach and speak to Elias
-    - Listen to his reminiscence about the tree and his late wife, Rosemary
-    - Receive the request to fetch water
+    **玩家操作**: 
+    - 接近并和 Elias 交谈
+    - 听他回忆橡树和已故的妻子,Rosemary
+    - 收到请求去取水
     
-    **Outcome**: Quest initiated, player directed fetch water from Mira
+    **结果**: 任务启动,玩家被引导去取水
 
-    **Note**: Players can interact with Mira before meeting Elias, establishing her character and the kiosk's presence in the game world.
+    **注意**: 玩家可以在见到 Elias 之前与 Mira 互动,建立她的角色和游戏世界中的小卖部的存在。
     
   </TabItem>
-  <TabItem value="stage2" label="Seeking Water">
+  <TabItem value="stage2" label="寻找水源">
     
-    **Location**: Mira's kiosk in the town
+    **位置**: Mira 的小卖部在城镇
     
-    **Character**: Mira Swiftwater (kiosk owner)
+    **角色**: Mira Swiftwater (小卖部老板)
     
-    **Player Actions**:
-    - Approach Mira's kiosk
-    - Request water for Elias
-    - Learn the price (20 emeralds)
+    **玩家操作**:
+    - 接近 Mira 的小卖部
+    - 请求水给 Elias
+    - 了解价格 (20 翡翠)
     
-    **Possible Outcomes**:
-    1. If player has 20 emeralds:
-       - Purchase water
-       - Proceed to Stage 4
-    2. If player lacks 20 emeralds:
-       - Cannot purchase water
-       - Proceed to Stage 3
+    **可能的结果**:
+    1. 如果玩家有 20 翡翠:
+       - 购买水
+       - 进入第 4 阶段
+    2. 如果玩家没有 20 翡翠:
+       - 无法购买水
+       - 进入第 3 阶段
     
-    **Note**: If players return to Elias without water, he responds kindly, maintaining the option to complete the quest later.
+    **注意**: 如果玩家在没有水的情况下返回给 Elias,他会友好地保持完成任务的选项。
 
   </TabItem>
-  <TabItem value="stage3" label="Gathering Emeralds">
+  <TabItem value="stage3" label="收集翡翠">
 
-    **Location**: Various locations in the game world
+    **位置**: 游戏世界中的各个位置
     
-    **Player Actions**:
-    - Explore and complete other tasks to earn emeralds
-    - Return to Mira's kiosk once 20 emeralds are collected
+    **玩家操作**:
+    - 探索并完成其他任务以获得翡翠
+    - 返回 Mira 的小卖部,一旦收集到 20 翡翠
     
-    **Outcome**: Player can purchase water and proceed to Stage 4
+    **结果**: 玩家可以购买水并进入第 4 阶段
 
-    **Note**: If players return to Elias without water, he responds kindly, maintaining the option to complete the quest later.
+    **注意**: 如果玩家在没有水的情况下返回给 Elias,他会友好地保持完成任务的选项。
     
    </TabItem>
-   <TabItem value="stage4" label="Quest Completion">
+   <TabItem value="stage4" label="任务完成">
     
-    **Location**: Back at the oak tree in the town square
+    **位置**: 回到城镇广场的橡树下
     
-    **Character**: Elias Thornberry
+    **角色**: Elias Thornberry
     
-    **Player Actions**:
-    - Return to Elias
-    - Give him the water
+    **玩家操作**:
+    - 返回给 Elias
+    - 给他水
     
-    **Outcome**: 
-    - Elias expresses gratitude
-    - Shares another memory
-    - Gives player a small reward
-    - Quest completed
+    **结果**: 
+    - Elias 表达感激
+    - 分享另一个记忆
+    - 给玩家一个小奖励
+    - 任务完成
     
   </TabItem>
-  <TabItem value="post-quest" label="Post-Quest">
+  <TabItem value="post-quest" label="任务后">
 
-    **Location**: Oak tree in the town square
+    **位置**: 城镇广场的橡树下
     
-    **Character**: Elias Thornberry
+    **角色**: Elias Thornberry
     
-    **Player Actions**: 
-    - Return to Elias at any time
-    - Listen to one of his random monologues about memories, the tree, or life observations
+    **玩家操作**: 
+    - 返回给 Elias 任何时候
+    - 听他关于记忆、橡树或生活观察的随机独白
     
-    **Outcome**: Adds depth to the game world and Elias's character
+    **结果**: 增加了游戏世界和 Elias 的角色深度
   </TabItem>
 </Tabs>
 
-## Configuring the Quest
+## 配置任务
 
-### Setup Pages
-To bring our quest to life, we need to configure several pages that define the NPCs, their dialogues, and the quest structure.
-These pages work together to create a cohesive quest experience:
+### 设置页面
+为了使我们的任务栩栩如生,我们需要配置几个页面来定义 NPC、他们的对话和任务结构。
+这些页面一起创建一个连贯的任务体验:
 
 <EntryDisplay pages={[
     require("./assets/entity_objectives/ent_obj_manifest.json"),
@@ -129,49 +129,49 @@ These pages work together to create a cohesive quest experience:
     require("./assets/entity_objectives/ent_obj_static.json"),
 ]} />
 
-## Interact Entity Objective
+## 互动实体目标
 
-[Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx) are a powerful tool that allows you to create objectives that require players to interact with specific NPCs.
-Here's how to set it up:
+[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)是一个强大的工具,允许你创建需要玩家与特定 NPC 互动的目标。
+这里是如何设置它:
 
 <EntrySearch entryName="interact_entity_objective"/>
 
-In our _**"A Sip of Memories"**_ quest, we use multiple Interact Entity Objectives for different NPCs at various stages.
-For example, we have separate objectives for talking to Elias at the beginning of the quest and when the player returns with the water.
+在我们的 _**"记忆的一口"**_ 任务中,我们为不同的 NPC 在不同的阶段使用多个互动实体目标。
+例如,我们为在任务开始时与 Elias 交谈和玩家返回时与 Mira 交谈分别设置了目标。
 
-### Visual Indicators
+### 视觉指示器
 
-The [Interact Entity Objective](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx) comes with built-in visual cues to guide players:
+[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)带有内置视觉提示来引导玩家:
 
-- When an objective is active for an NPC, an indicator appears above their head.
-- The indicator changes based on whether the player has the quest tracked or not.
+- 当目标对 NPC 有效时,指示器会出现在他们的头上。
+- 指示器会根据玩家是否跟踪任务而变化。
 
 <div className="flex flex-col items-center justify-center space-y-4 md:space-y-0 md:flex-row md:space-x-4">
     <Figure title="NPC Indicator when Quest is Tracked" img={require("./assets/entity_objectives/npc_indicator_tracked.png")} alt="NPC Indicator Tracked" width={400} />
     <Figure title="NPC Indicator when Quest is Not Tracked" img={require("./assets/entity_objectives/npc_indicator_untracked.png")} alt="NPC Indicator Not Tracked" width={400} />
 </div>
 
-You can customize these indicators using [Snippets](../../05-helpful-features/05-snippets.mdx) to match your game's aesthetic.
+你可以使用[代码片段](../../05-helpful-features/05-snippets.mdx)来匹配你的游戏的美学。
 
-## Interact Entity Objectives Path Stream
+## 互动实体目标路径流
 
-To further assist players in navigating your game world, you can implement the [Interact Entity Objectives Path Stream](../../../adapters/EntityAdapter/entries/quest/interact_entity_objectives_path_stream.mdx). 
-This feature creates a visual path, guiding players to NPCs with active [Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx) to those NPCs.
+为了进一步帮助玩家导航游戏世界,你可以实现[互动实体目标路径流](../../../adapters/EntityAdapter/entries/quest/interact_entity_objectives_path_stream.mdx)。 
+这个功能创建一个视觉路径,引导玩家到有活动[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)的 NPC。
 
 <EntrySearch entryName="interact_entity_objectives_path_stream"/>
 
-Key features of the Path Stream:
-- Automatically generates paths to all NPCs with active [Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx).
-- Only shows paths for objectives in currently tracked quests.
-- Helps players navigate complex game environments more easily.
+路径流的关键功能:
+- 自动生成到所有有活动[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx)的 NPC 的路径。
+- 仅显示当前跟踪任务中的目标路径。
+- 帮助玩家更轻松地导航复杂的游戏环境。
 
-Here's a visual demonstration of the Path Stream in action:
+这里有一个路径流在行动中的视觉演示:
 
 <Player url={require("./assets/entity_objectives/path_stream.webm").default} />
 
-## Quest Setup
+## 任务配置
 
-To bring all these elements together and create our _**"A Sip of Memories"**_ quest, we use the following quest configuration:
+为了将所有这些元素结合在一起并创建我们的 _**"记忆的一口"**_ 任务,我们使用以下任务配置:
 
 <EntryDisplay pages={[
     require("./assets/entity_objectives/ent_obj_quest.json"),
@@ -181,17 +181,17 @@ To bring all these elements together and create our _**"A Sip of Memories"**_ qu
     require("./assets/entity_objectives/ent_obj_static.json"),
 ]} />
 
-This configuration ties together the quest stages and objectives.
+这个配置将任务阶段和目标联系在一起。
 
-## Quest Demo
+## 任务演示
 
-To see how all these elements come together in practice, check out this demonstration of the _**"A Sip of Memories"**_ quest:
+要看看所有这些元素如何在实践中结合在一起,请查看这个 _**"记忆的一口"**_ 任务的演示:
 
 <Player url={require("./assets/entity_objectives/quest_demo.webm").default} />
 
-This demo showcases:
-- How players interact with NPCs and their dialogues
-- The visual indicators guiding players to objectives
-- The flow of the quest from start to finish
+这个演示展示了:
+- 玩家如何与 NPC 互动及其对话
+- 引导玩家到目标的视觉指示器
+- 从开始到结束的任务流程
 
-By implementing [Interact Entity Objectives](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx) in your quests, you can create rich, interactive experiences that helps guide players to where they need to go.
+通过在你的任务中实现[互动实体目标](../../../adapters/EntityAdapter/entries/quest/interact_entity_objective.mdx),你可以创建丰富的、互动的体验,帮助引导玩家到他们需要去的地方。

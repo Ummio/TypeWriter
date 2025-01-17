@@ -1,53 +1,53 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
 import Player from "@site/src/components/Player";
 import Image from "@site/src/components/Image";
 
-# Layout
+# 布局
 
-On this page, you will learn how to use the TypeWriter Web panel and create certain things.
+在本页面中，你将学习如何使用 TypeWriter 网页面板并创建特定内容。
 
-## Creating a page
+## 创建页面
 
-To create a page, simply click the button `Add Page` then enter the name of the page. It can't be a duplicate name of an already existing page. Select one of the four types: 
-* **Sequence**: Create interactions that can be played after each other.
-* **Static** : Referencing to data that doesn't change over the lifetime of the program.
-* **Cinematic**: Timed sequences of actions.
-* **Manifest**:  In the runtime calculated state of the interaction.
+要创建页面，只需点击 `添加页面` 按钮，然后输入页面名称。它不能与已存在的页面重名。选择以下四种类型之一：
+* **序列**：创建可以按顺序播放的互动。
+* **静态**：引用在程序生命周期内不会改变的数据。
+* **电影场景**：定时的动作序列。
+* **清单**：在运行时计算的互动状态。
 
 <Player url={require("../assets/layout/add-page.webm").default} />
 
-Now that we have created a sequence page, I will explain how the different layouts works.
+现在我们已经创建了一个序列页面，我将解释不同布局的工作方式。
 
-## Base Layout
+## 基本布局
 
-<Image img={require("../assets/layout/layout.png")} alt="Sequence Page Layout" />
+<Image img={require("../assets/layout/layout.png")} alt="序列页面布局" />
 
-1. **Page list**: This is where you can see all the pages that you have created. You can also create new pages here.
-2. **Action bar**: There are multiple actions that you can perform by clicking on the buttons from left to right:
-   - **Staging Indicator**: orange indicates that changes are not active on the server, and green means they are. Just hover over it to reveal the "Publish" button, and click it if you want to publish your staged pages to the server.
-   - **Search bar**: Use this to search for entries or create new ones.
-   - **+ button**: Click here to create new entries.
+1. **页面列表**：这里你可以看到所有已创建的页面。你也可以在这里创建新页面。
+2. **操作栏**：从左到右点击按钮可以执行多个操作：
+   - **暂存指示器**：橙色表示更改尚未在服务器上生效，绿色表示已生效。只需将鼠标悬停在上面即可显示"发布"按钮，如果要将暂存的页面发布到服务器，请点击它。
+   - **搜索栏**：用于搜索条目或创建新条目。
+   - **+ 按钮**：点击此处创建新条目。
 
-**Inspector**: This is where you can edit the properties of the selected entry.
+**检查器**：这里你可以编辑所选条目的属性。
 
-3. **Entry Information**: Here you can view all the information about an entry, such as the ID and name.
-4. **Fields**: Use this section to edit the properties of the entries.
-5. **Operations**: This section contains various actions that you can perform with the entry.
+3. **条目信息**：在这里你可以查看条目的所有信息，如 ID 和名称。
+4. **字段**：使用此部分编辑条目的属性。
+5. **操作**：此部分包含可以对条目执行的各种操作。
 
-## Sequence, static and manifest layout
+## 序列、静态和清单布局
 
-- In the center, all your entries are shown.
-- Use your mouse's scroll wheel to zoom in or out.
-- Click on an entry to open it in the inspector.
-- When holding an entry for a few seconds, it makes it drag and drop so you can connect it with other entries.
+- 在中心显示所有条目。
+- 使用鼠标滚轮放大或缩小。
+- 点击条目在检查器中打开它。
+- 按住条目几秒钟可以进行拖放，以便与其他条目连接。
 
-## Cinematic layout
+## 电影场景布局
 
-<Image img={require("../assets/layout/layout-cinematic.png")} alt="Cinematic Page Layout" />
+<Image img={require("../assets/layout/layout-cinematic.png")} alt="电影场景页面布局" />
 
-1. **Segments**: Inside a cinematic entry, you can create segments, which are displayed on your track. Segments can't overlap each other.
-2. **Track**: This is where you can see all the segments that you have created and edit their show duration.
-3. **Track Duration**: Here, you can edit the duration of the track. The track duration is in Minecraft ticks, so 20 ticks equals 1 second.
+1. **片段**：在电影场景条目中，你可以创建片段，这些片段显示在你的轨道上。片段之间不能重叠。
+2. **轨道**：这里你可以看到所有已创建的片段，并编辑它们的显示时长。
+3. **轨道时长**：在这里，你可以编辑轨道的时长。轨道时长以 Minecraft 刻度为单位，所以 20 刻等于 1 秒。

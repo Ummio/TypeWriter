@@ -1,49 +1,49 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
-import Player from "@site/src/components/Player";
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import EntrySearch from "@site/src/components/EntrySearch";
 
-# Adding Options
+# 添加选项
 
-:::info[Before starting]
-It's best to first read [First Interaction](./index.mdx) before starting this tutorial.
+:::info[开始之前]
+建议先阅读[第一个互动](./index.mdx)再开始本教程。
 :::
 
-In this tutorial, you will learn how to create and use options in your interactions.
+在本教程中,你将学习如何在互动中创建和使用选项。
 
-## Creating an Option
+## 创建选项
 
-To create an option, follow these steps:
+要创建选项,请按照以下步骤操作:
 
-1. Right-click on your entry and select `+ Link with ...`.
-2. Search for `Add Option` and click on the + icon to add it to your sequence.
+1. 右键点击你的条目并选择 `+ Link with ...`。
+2. 搜索 `Add Option` 并点击 + 图标将其添加到你的序列中。
 
 <EntrySearch entryName='option' />
 
-## Configuring a Option
+## 配置选项
 
-Let's configure the option by doing the following steps:
+让我们按照以下步骤配置选项:
 
-1. Enter the field `Text` your question that you want to ask the player, like `Am i a beautiful flower?`.
-2. Select the correct [speaker](./index.mdx#configuring-the-speaker) for the option.
+1. 在 `Text` 字段中输入你想问玩家的问题,比如 `我是一朵漂亮的花吗?`。
+2. 为选项选择正确的[说话者](./index.mdx#configuring-the-speaker)。
 
-<Image img={require("../../assets/interactions/configure-option.png")} alt="Configuring an option entry" />
+<Image img={require("../../assets/interactions/configure-option.png")} alt="配置选项条目" />
 
-### Adding options
+### 添加选项
 
-1. Click on the + icon by the field `Options` and expand `Options #1`.
-2. Enter the question answer of option 1 in the Field `Text` like `Yes you are!`.
-3. Press the + icon in the field triggers inside `Options #1` and expand `Triggers #1`.
-4. Click on `Select a triggerable` and in the search menu, create the entry that you want to trigger after the player selected that Option. Like a spoken with `Yay thank you!`
-5. Repeat these steps to create more options like `No you are not.`.
+1. 点击 `Options` 字段旁的 + 图标并展开 `Options #1`。
+2. 在 `Text` 字段中输入选项1的回答,比如 `是的,你很漂亮!`。
+3. 在 `Options #1` 内的 triggers 字段中点击 + 图标并展开 `Triggers #1`。
+4. 点击 `Select a triggerable` 并在搜索菜单中创建你想在玩家选择该选项后触发的条目。比如一个内容为 `太好了,谢谢你!` 的对话。
+5. 重复这些步骤来创建更多选项,比如 `不,你不漂亮。`。
 
-<Image img={require("../../assets/interactions/adding-options.png")} alt="Adding options to an option entry" />
+<Image img={require("../../assets/interactions/adding-options.png")} alt="向选项条目添加选项" />
 
-## Result
+## 结果
 
-After you have created the options, you can test your interaction by clicking the publish button and it should look like this:
+创建选项后,你可以点击发布按钮测试你的互动,效果应该是这样的:
 
 <Player url={require("../../assets/interactions/final-result-option.webm").default}/>

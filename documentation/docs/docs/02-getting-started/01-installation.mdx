@@ -1,114 +1,113 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
 import DownloadVersion from "@site/src/components/DownloadVersion";
 import Image from "@site/src/components/Image";
 
-# Installation Guide
+# 安装指南
 
-:::danger[Platform Compatibility]
-TypeWriter only works on **paper** servers. It will not work on Spigot or Bukkit servers.
+:::danger[平台兼容性]
+TypeWriter 仅适用于 **Paper** 服务器。它不支持 Spigot 或 Bukkit 服务器。
 :::
 
-## Installing the TypeWriter Plugin
+## 安装 TypeWriter 插件
 
-Ensure a smooth installation process for the TypeWriter plugin on your Paper Minecraft server by following these steps:
+请按照以下步骤在你的 Paper Minecraft 服务器上安装 TypeWriter 插件:
 
-### Plugin Installation
+### 插件安装
 
-1. Start by downloading <DownloadVersion />.
-2. Place the downloaded plugin into your server's `plugins` folder.
+1. 首先下载 <DownloadVersion />。
+2. 将下载的插件放入服务器的 `plugins` 文件夹中。
 
-### Handling Dependencies
+### 处理依赖项
 
-TypeWriter relies on additional plugins that need to be installed for proper functioning.
+TypeWriter 需要安装其他插件才能正常运行。
 
-3. Download and add TypeWriter's dependency, [PacketEvents](https://modrinth.com/plugin/packetevents/versions?l=paper), to your `plugins` directory.
+3. 下载并将 TypeWriter 的依赖项 [PacketEvents](https://modrinth.com/plugin/packetevents/versions?l=paper) 添加到你的 `plugins` 目录中。
 
-4. Verify that you **don't** have the [InteractiveChat](https://www.spigotmc.org/resources/interactivechat-show-items-inventory-in-chat-custom-chat-keywords-bungee-velocity-support.75870/) or [CustomNamePlates](https://polymart.org/resource/customnameplates.2543) plugin installed, as it may cause conflicts with TypeWriter.
+4. 确保你**没有**安装 [InteractiveChat](https://www.spigotmc.org/resources/interactivechat-show-items-inventory-in-chat-custom-chat-keywords-bungee-velocity-support.75870/) 或 [CustomNamePlates](https://polymart.org/resource/customnameplates.2543) 插件，因为它们可能与 TypeWriter 产生冲突。
 
-### Basic Extension
+### 基础扩展
 
-The TypeWriter offers various extensions for customization, but it's crucial to have the `BasicExtension` installed.
+TypeWriter 提供了多种扩展用于自定义，但必须安装 `BasicExtension`。
 
-5. Download the latest `BasicExtension` from <DownloadVersion /> and add it to the `plugins/TypeWriter/extensions` folder.
+5. 从 <DownloadVersion /> 下载最新的 `BasicExtension` 并将其添加到 `plugins/TypeWriter/extensions` 文件夹中。
 
-For a comprehensive list of available extensions, refer to the [extensions section](../../adapters).
+有关可用扩展的完整列表，请参阅[扩展部分](../../adapters)。
 
-6. With all components in place, restart your Minecraft server to complete the TypeWriter installation.
+6. 所有组件就位后，重启你的 Minecraft 服务器以完成 TypeWriter 的安装。
 
-:::danger[Out of Sync]
-When updating the plugin, it's crucial to **always** install the corresponding extensions for that update. Failure to match the versions of the extension and plugin can result in the plugin not functioning correctly!
+:::danger[版本不同步]
+更新插件时，**必须**安装与该更新对应的扩展。如果扩展和插件的版本不匹配，可能导致插件无法正常运行！
 :::
 
-## Configuring the Web Panel
+## 配置网页面板
 
-:::caution[External Server Providers]
-Typewriter's web panel is **not compatible** with some external server providers, including **Minehut**, **Aternos**, and **Apex**. These providers typically don’t support multiple ports, though their support team may be able to open additional ports upon request.  
+:::caution[外部服务器提供商]
+Typewriter 的网页面板与某些外部服务器提供商**不兼容**，包括 **Minehut**、**Aternos** 和 **Apex**。这些提供商通常不支持多个端口，不过你可以向他们的支持团队请求开放额外的端口。
 
-If this isn't possible, you can still use all other features in Typewriter or consider setting up a local server with Typewriter installed.  
+如果无法实现，你仍然可以使用 Typewriter 的其他功能，或考虑搭建一个安装了 Typewriter 的本地服务器。
 
-For further assistance, feel free to reach out with questions on our [Discord](https://discord.gg/HtbKyuDDBw).
+如需进一步帮助，欢迎在我们的 [Discord](https://discord.gg/HtbKyuDDBw) 上提问。
 :::
 
-:::info[Resource consumption]
-Please note that the web panel and web socket use precious resources on your server, and it is best to host the panel on your development server instead of on a production server.
+:::info[资源消耗]
+请注意，网页面板和网络套接字会消耗服务器的宝贵资源，建议将面板部署在开发服务器上，而不是生产服务器上。
 :::
 
-Now that we have installed the plugin, we need to configure the web panel.
+现在我们已经安装了插件，需要配置网页面板。
 
-The web panel needs two ports to be open. These can be changed, but it does need at least two new ports to be open. The
-The default ports are `8080` and `9092`.
+网页面板需要开放两个端口。这些端口可以更改，但至少需要两个新的开放端口。默认端口是 `8080` 和 `9092`。
 
-To enable the web panel, please follow these steps:
+要启用网页面板，请按照以下步骤操作：
 
-### Enabling the Web Panel
+### 启用网页面板
 
-1. Open the `plugins/Typewriter/config.yml` file.
-2. Change the settings to the following:
+1. 打开 `plugins/Typewriter/config.yml` 文件。
+2. 将设置更改为以下内容：
 
 ```yaml title="plugins/Typewriter/config.yml"
-# Whether the web panel and web sockets are enabled.
+# 是否启用网页面板和网络套接字
 enabled: true
-# The hostname of the server. CHANGE THIS to your server's IP.
+# 服务器的主机名。将此更改为你服务器的 IP。
 hostname: "127.0.0.1"
-# The panel uses web sockets to sync changes to the server and allows you to work with multiple people at the same time.
+# 面板使用网络套接字来同步服务器的更改，并允许多人同时工作。
 websocket:
-  # The port of the websocket server. Make sure this port is open.
+  # 网络套接字服务器的端口。确保此端口已开放。
   port: 9092
-  # The authentication that is used. Leave unchanged if you don't know what you are doing.
+  # 使用的身份验证方式。如果你不知道这是做什么的，请保持不变。
   auth: "session"
 panel:
-  # The panel can be disabled while the sockets are still open. Only disable this if you know what you are doing.
-  # If the web sockets are disabled, then the panel will always be disabled.
+  # 可以在套接字仍然开放的情况下禁用面板。仅在你知道自己在做什么时才禁用。
+  # 如果网络套接字被禁用，则面板也将始终被禁用。
   enabled: true
-  # The port of the web panel. Make sure this port is open.
+  # 网页面板的端口。确保此端口已开放。
   port: 8080
 ```
 
-3. Please use [portchecker](https://portchecker.co/) to check if your ports are open. If not, please open the ports yourself or contact your hosting company.
-4. Restart your server to complete the installation.
+3. 请使用 [portchecker](https://portchecker.co/) 检查你的端口是否开放。如果没有开放，请自行开放端口或联系你的主机提供商。
+4. 重启服务器以完成安装。
 
-## Connecting to the Web Panel
+## 连接到网页面板
 
-To connect to the web panel, follow these steps:
+要连接到网页面板，请按照以下步骤操作：
 
-1. Run the command `/typewriter connect` in-game. This will provide you with a link to access the web panel.
+1. 在游戏中运行 `/typewriter connect` 命令。这将提供一个访问网页面板的链接。
 
-![Connect-command](../assets/installation/connect-command.gif)
+![连接命令](../assets/installation/connect-command.gif)
 
-2. Open the link in your preferred web browser.
+2. 在你喜欢的网页浏览器中打开链接。
 
-<Image img={require("../assets/installation/connect-book.png")} width={400} alt="Connect to the web panel in the book" />
+<Image img={require("../assets/installation/connect-book.png")} width={400} alt="在书中连接到网页面板" />
 
-Once you've successfully connected, you can use the web panel to create and configure quests, NPC dialogues, and more. The panel also allows you to view and edit your server's existing player interactions.
+成功连接后，你可以使用网页面板来创建和配置任务、NPC 对话等。面板还允许你查看和编辑服务器现有的玩家交互。
 
-## Troubleshooting
+## 故障排除
 
-Encountering problems? Check out the [troubleshooting](../06-troubleshooting/index.mdx) page for solutions to common issues.
-If you still have issues, feel free to ask for help in the [Discord](https://discord.gg/HtbKyuDDBw).
+遇到问题？查看[故障排除](../06-troubleshooting/index.mdx)页面获取常见问题的解决方案。
+如果你仍然有问题，欢迎在 [Discord](https://discord.gg/HtbKyuDDBw) 上寻求帮助。
 
-## What's Next?
+## 下一步
 
-Try creating your first interaction by following the [Interactions](../03-creating-stories/01-interactions/index.mdx) guide. If you have any questions, feel free to ask them in the [Discord](https://discord.gg/HtbKyuDDBw).
+尝试按照[交互](../03-creating-stories/01-interactions/index.mdx)指南创建你的第一个交互。如果你有任何问题，欢迎在 [Discord](https://discord.gg/HtbKyuDDBw) 上提问。

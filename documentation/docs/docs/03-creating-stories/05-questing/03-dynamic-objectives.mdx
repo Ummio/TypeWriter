@@ -1,38 +1,38 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
 import Player from "@site/src/components/Player";
 import EntryDisplay from "@site/src/components/EntryDisplay";
 
-# Dynamic Objectives
-:::danger[Quest Extension]
-You must have installed the Quest Extension before starting this tutorial.
+# 动态目标
+:::danger[任务扩展]
+在开始本教程之前,你必须先安装任务扩展。
 :::
-:::info[Before starting]
-It's best to first read [Questing](./index.mdx) before starting this tutorial.
-As this tutorial builds upon the quest tutorial.
+:::info[开始之前]
+建议先阅读[任务系统](./index.mdx)再开始本教程。
+因为本教程是基于任务教程进行的。
 :::
-In some quests, the objectives need to progress forward and backwards based on the player's state. 
-For example, the player needs to be in a certain region to continue.
+在某些任务中,目标需要根据玩家的状态前进和后退。
+例如,玩家需要在特定区域内才能继续。
 
-## Adding the objective
+## 添加目标
 
-For our quest, we want to change the objective based on if the player has the magnet boots equipped.
+对于我们的任务,我们想要根据玩家是否装备了磁力靴来改变目标。
 
-Since objectives are `Audience` entries, we can use the various `Audience` entries to show and hide the objectives.
+由于目标是 `受众` 条目,我们可以使用各种 `受众` 条目来显示和隐藏目标。
 
-To expand our quest, we will have the following objectives:
+为了扩展我们的任务,我们将有以下目标:
 
-- When the player has not found the magnet boots, the objective is to __find a way to cross the chasm__.
-- When the player has found the magnet boots, the objective is to __equip the magnet boots__.
-- When the player has equipped the magnet boots, the objective is to __walk across the chasm__.
+- 当玩家还没有找到磁力靴时,目标是__找到一种方法穿过峡谷__。
+- 当玩家找到了磁力靴时,目标是__装备磁力靴__。
+- 当玩家装备了磁力靴时,目标是__走过峡谷__。
 
 <EntryDisplay pages={[
     require("./assets/dynamic_objectives/quest_manifest.json"),
     require("./assets/index/quest_static.json"),
 ]} />
 
-This is what it looks like to play the quest:
+这是玩这个任务时的效果:
 
 <Player url={require("./assets/dynamic_objectives/quest_demo.webm").default} />

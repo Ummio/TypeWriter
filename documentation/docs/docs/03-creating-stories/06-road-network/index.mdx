@@ -1,5 +1,5 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
 import EntrySearch from '@site/src/components/EntrySearch';
@@ -10,115 +10,57 @@ import Image from "@site/src/components/Image";
 import Admonition from '@theme/Admonition';
 import ActionButton from '@site/src/components/ActionButtons'; 
 
-# Road Network
-:::info[Before starting]
-This guide assumes that you have already installed the [Basic Extension](../../02-getting-started/01-installation.mdx#basic-extension).\
-Also, make sure you have read the [layout](../../02-getting-started/02-layout.mdx) documentation and created a **static** page.
+# 路径网络
+:::info[开始之前]
+本指南假设你已经安装了[Basic Extension](../../02-getting-started/01-installation.mdx#basic-extension)。\
+同时,请确保你已经阅读了[布局](../../02-getting-started/02-layout.mdx)文档并创建了一个**静态**页面。
 :::
 
-Road Networks are essential if you want to make NPCs move around your map or let the player follow a path. In this guide, we will show you how to create a road network and how to use it in your story.
+路径网络对于让NPC在你的地图上移动或让玩家跟随路径来说是必不可少的。在本指南中,我们将向你展示如何创建路径网络以及如何在你的故事中使用它。
 
-## What is the road network
-The road network is an internal graph structure that TypeWriter uses to efficiently calculate paths between two distant points.
+## 什么是路径网络?
 
-## Creating a road network
-First, we need to add a `Base Road Network` entry to our page. To add it to our page, click on the + icon in the top right corner of the panel and search for `base road network` then add it to your page by clicking on the + icon.
+路径网络是一个由节点和边组成的图形。节点是实体可以移动到的位置,边是连接这些位置的路径。
 
-<EntrySearch entryName='base_road_network' />
+## 创建路径网络
 
-### Opening the content mode 
-In the `Base Road Network` entry in the inspector, click the <ActionButton button='capture'/> icon next to the ArtifactId field to open the content mode.
+要创建路径网络,你需要进入内容模式。在内容模式下,你可以使用物品栏中的物品来创建和编辑路径网络。
 
-### Adding a node
-Now that we have opened the content mode, we need to add a node. Nodes are points in a world that can be connected to each other using edges. To add a node, in your hotbar select the diamond and right-click it. This will open the node editor. To exit the menu of the node, click the end crystal.
+### 添加节点
+你可以通过选择物品栏中的钻石并右键点击来添加节点。这将在你点击的位置创建一个新节点。
+
 <Player url={require("../../assets/road-network/add-node.webm").default} />
 
-### Creating the path
-To create a path, you will always need 2 nodes. So create 2 nodes and then select the redstone from your hotbar and right-click it. Now it should look a bit like this:
-<Player url={require("../../assets/road-network/path.webm").default} />
+### 连接节点
+要连接节点,你需要选择物品栏中的线并右键点击两个节点。这将在这两个节点之间创建一条边。
 
-Now you have created a path. You can expand a road network with unlimited nodes and create paths between them.
-:::tip[Node placement]
-It is recommended that you create nodes at the beginning and end of a road or path in your world. This is to save resources on loading and recalculating the edges.
-:::
+<Player url={require("../../assets/road-network/connect-nodes.webm").default} />
 
-### Editing a node
-When in the node editor, you have 4 options:
-<Tabs groupId="node-editor" queryString>
-  <TabItem value="change-radius" label="Change Radius" default>
-    #### Why is their radius?
-    When performing pathfinding from node A, all nodes within a **30-block** radius will be checked, for example, nodes B, C, D, E, F, and G. If it finds that the path to node C requires passing through nodes B radius, it will stop calculating the path to C. This is because the pathfinding avoids paths that need to skip nodes like B.
-    
-    <Image img={require("../../assets/road-network/radius.png")} alt="road-network radius explanation" />
+### 删除节点和边
+要删除节点或边,你需要选择物品栏中的剪刀并右键点击要删除的节点或边。
 
-    #### How to use? 
-    To change the radius of a node, select the sculk sensor from your hotbar and right-click.
-    :::warning[Node click]
-    When right-clicking an item, you must not point your cursor at the node you are editing. This will open the content mode and not trigger the event.
-    :::
+<Player url={require("../../assets/road-network/remove-node.webm").default} />
 
-    Then, with your scroll wheel, you can change the radius of a node.
+### 负节点
+负节点是一种特殊类型的节点,它会阻止实体通过它。这对于创建单向路径或阻止实体通过某些区域很有用。
 
-    <Player url={require("../../assets/road-network/radius.webm").default} />
-  </TabItem>
-  <TabItem value="remove-edge" label="Remove Edge">
-    #### Why remove an edge?
-    Removing an edge can be useful when you want a path to skip a node or to make a path one-way only.
-
-    #### How to use?
-    To remove an edge, select the redstone from your hotbar and right-click it on the node you want to remove the edge from.
-    <Player url={require("../../assets/road-network/remove-edges.webm").default} />
-
-    :::warning[Recalculate]
-    You must recalculate the edges using the redstone from your hotbar after adding or removing a negative node
-    :::
-
-
-    #### One way path
-    To make it one way only, you should, instead of just right-clicking, also hold shift. This will make the edge one-way only.
-
-    <Player url={require("../../assets/road-network/remove-edge.webm").default} />
-  </TabItem>
-  <TabItem value="fast-travel" label="Add Fast Travel Connection">
-    #### Why add a fast travel connection?
-    Fast travel connections are used to make a path teleport the NPC to another node instead of needing to walk to it.
-
-    #### How to use?
-    To add a fast travel connection, select the emerald from your hotbar and right-click it on the node you want it to teleport to.
-
-    <Player url={require("../../assets/road-network/fast-travel.webm").default} />
-
-    #### One way fast travel
-    To make it one way only, you should, instead of just right-clicking, also hold shift. This will make the fast travel one-way only.
-  </TabItem>
-  <TabItem value="remove-node" label="Remove Node">
-    To remove a node, select the redstone block from your hotbar and right-click it.
-    :::warning[Node click]
-    When right-clicking an item, you must not point your cursor at the node you are editing. This will open the content mode and not trigger the event.
-    :::
-  </TabItem>
-</Tabs>
-
-### Negative Nodes
-Sometimes you want pathfinding to not go via a certain path. For example, when you have a place where the pathfinding thinks it can jump down or up 1 block but shouldn't, you can add a negative node to prevent this.\
-Here is an example:
-<Tabs groupId="negative-nodes" queryString>
-  <TabItem value="with" label="With Negative Node" default>
+<Tabs>
+  <TabItem value="with" label="使用负节点">
     <Player url={require("../../assets/road-network/negative-nodes-preview.webm").default} />
   </TabItem>
-  <TabItem value="without" label="Without Negative Node">
+  <TabItem value="without" label="不使用负节点">
      <Player url={require("../../assets/road-network/non-negative-nodes-example.webm").default} />
   </TabItem>
 </Tabs>
 
-#### How to add a negative node?
-You can add a negative node by selecting the netherite ingot from your hotbar in the content mode and right-clicking it.
-:::warning[Recalculate]
-You must recalculate the edges using the redstone from your hotbar after adding or removing a negative node
+#### 如何添加负节点?
+你可以通过选择物品栏中的下界合金锭并右键点击来添加负节点。
+:::warning[重新计算]
+在添加或删除负节点后,你必须使用物品栏中的红石重新计算边
 :::
 
-### Highlighting nodes
-When you have a lot of nodes, it can be hard to see which nodes are connected to each other. To make this easier, you can highlight the nodes that are connected to each other. To do this, select the glowstone from your hotbar and right-click it.
+### 高亮节点
+当你有很多节点时,可能很难看出哪些节点相互连接。为了使这更容易,你可以高亮显示相互连接的节点。要做到这一点,选择物品栏中的萤石并右键点击它。
 
-## Ending
-Now you have learned how to successfully set up the road network.
+## 结束
+现在你已经学会了如何成功设置路径网络。

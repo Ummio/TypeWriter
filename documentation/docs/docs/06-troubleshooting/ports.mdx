@@ -1,44 +1,44 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
 
-# Panel Loading Issues Troubleshooting Guide
+# 面板加载问题故障排除指南
 
-Are you encountering difficulties with the Typewriter plugin's panel not loading? This guide will help you troubleshoot and ensure the correct setup for optimal functionality.
+Typewriter 插件的面板无法加载？本指南将帮助你排除故障并确保正确设置以获得最佳功能。
 
-## Assigning Ports Correctly
+## 正确分配端口
 
-If the panel isn't loading, a common issue could be the lack of assigned ports. The Typewriter plugin requires two open ports:
+如果面板无法加载，常见的问题可能是缺少分配的端口。Typewriter 插件需要两个开放的端口：
 
-1. One port for the panel to load.
-2. Another port for the websocket to communicate with the server.
+1. 一个端口用于加载面板。
+2. 另一个端口用于与服务器进行 websocket 通信。
 
 :::warning
-Hosting platforms like Aternos, which only offer a single port, are not compatible with the Typewriter plugin due to this requirement.
+像 Aternos 这样只提供单个端口的托管平台，由于这个要求而无法与 Typewriter 插件兼容。
 :::
 
-## Using the Correct URL
+## 使用正确的 URL
 
-Ensure that you are using the correct URL to access the panel. The format should be either `ip:port` or, if you're using a subdomain, `url:port`. Using the correct URL is crucial for accessing the panel successfully.
+确保你使用正确的 URL 来访问面板。格式应该是 `ip:端口` 或者，如果你使用子域名，则是 `url:端口`。使用正确的 URL 对于成功访问面板至关重要。
 
-## Avoiding Duplicate Ports in Config
+## 避免配置中的重复端口
 
-A common mistake is including the port in the `hostname` field of the `config.yml` file. 
-The hostname should only be the IP address or the domain name. It should not contain the port.
-Here's an example:
+一个常见的错误是在 `config.yml` 文件的 `hostname` 字段中包含端口。
+hostname 应该只包含 IP 地址或域名。它不应该包含端口。
+这里是一个例子：
 
 ```yaml title="config.yml"
 # ...
 // highlight-red
-hostname: "127.0.0.1:25565" // Incorrect line
+hostname: "127.0.0.1:25565" // 错误的写法
 // highlight-green
-hostname: "127.0.0.1"       // Correct line
+hostname: "127.0.0.1"       // 正确的写法
 # ...
 ```
 
-Removing the port from the hostname field can resolve issues related to the panel not loading.
+从 hostname 字段中移除端口可以解决与面板加载相关的问题。
 
 ---
 
-For further assistance, please reach out to our community on [Discord](https://discord.gg/HtbKyuDDBw). We're here to help make your experience with the Typewriter plugin as smooth as possible!
+如需进一步帮助，请通过 [Discord](https://discord.gg/HtbKyuDDBw) 联系我们的社区。我们随时准备帮助你让 Typewriter 插件的使用体验更加顺畅！
 

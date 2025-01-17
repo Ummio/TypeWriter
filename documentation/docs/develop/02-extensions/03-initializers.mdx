@@ -1,19 +1,19 @@
 import CodeSnippet from "@site/src/components/CodeSnippet";
 
-# Initializers
+# 初始化器
 
-Sometimes your extension needs to do some initialization before it can be used.
-For example, you might need to add a hook to a plugin to make it work with your extension.
+有时你的扩展在使用前需要进行一些初始化操作。
+例如，你可能需要为插件添加一个钩子，以使其能够与你的扩展一起工作。
 
-## Declaring an Initializer
-To declare an initializer, you need to create a **object** that implements the `Initializable` interface.
-And add the `@Initializer` annotation to the class.
+## 声明初始化器
+要声明一个初始化器，你需要创建一个实现了 `Initializable` 接口的**对象**。
+并在类上添加 `@Initializer` 注解。
 
 <CodeSnippet tag="initializer" json={require("../snippets.json")} />
 
-:::danger Ensure Cleanup
-The `shutdown` method is called when the extension is unloaded.
-You should make sure that no resources are leaked when the extension is unloaded.
+:::danger 确保清理
+当扩展被卸载时会调用 `shutdown` 方法。
+你应该确保在扩展卸载时没有资源泄漏。
 :::
 
-Typewriter will automatically register and call the control flow methods when the extension is loaded and unloaded.
+当扩展被加载和卸载时，Typewriter 会自动注册并调用这些控制流方法。

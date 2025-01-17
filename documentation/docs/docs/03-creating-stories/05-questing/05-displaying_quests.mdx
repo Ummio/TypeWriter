@@ -1,58 +1,56 @@
 ---
-difficulty: Normal
+difficulty: 普通
 ---
 
 import EntryDisplay from "@site/src/components/EntryDisplay";
 
-# Displaying Quests
-:::danger[Quest Extension]
-You must have installed the Quest Extension before starting this tutorial.
+# 显示任务
+:::danger[任务扩展]
+在开始本教程之前,你必须先安装任务扩展。
 :::
-Now that we've created our quest, we want to display it to the player.
-First, we need to track the quest.
+现在我们已经创建了任务,我们想要向玩家显示它。
+首先,我们需要追踪任务。
 
-## Quest Tracking
+## 任务追踪
 
-Tracking a quest is for displaying the quest progress to the player.
-Other entries can use the tracked quest to display information to the player.
+追踪任务是为了向玩家显示任务进度。
+其他条目可以使用被追踪的任务来向玩家显示信息。
 
-:::warning Important
-While many quests can be active at the same time, only **one** quest can be tracked at a time.
+:::warning 重要
+虽然同时可以有多个任务处于激活状态,但一次只能**追踪**一个任务。
 :::
 
-You can manually track a quest with the `/tw quest track <quest_id>` command.
-Or with the [Track Quest Action](../../../adapters/BasicAdapter/entries/action/track_quest.mdx) entry.
+你可以使用 `/tw quest track <quest_id>` 命令手动追踪任务。
+或者使用[追踪任务动作](../../../adapters/BasicAdapter/entries/action/track_quest.mdx)条目。
 
-Additionally, Typewriter will automatically track quests when the quest becomes active.
-Or when a objective becomes active and has a higher priority than the currently tracked quest.
+此外,当任务变为激活状态时,Typewriter 会自动追踪任务。
+或者当一个目标变为激活状态且优先级高于当前追踪的任务时。
 
-## Placeholders
+## PlaceholderAPI
 
-There are a few custom placeholders that can be used to display information to the player.
+如果你安装了 [PlaceholderAPI](../../05-helpful-features/03-placeholderapi.mdx),你可以使用以下占位符:
 
-| Placeholder | Description |
+| 占位符 | 描述 |
 | ----------- | ----------- |
-| `%typewriter_tracked_quest%` | The name of the tracked quest. |
-| `%typewriter_tracked_objectives%` | A list of the objecteves of the tracked quest joined by a comma. |
+| `%typewriter_tracked_quest%` | 被追踪任务的名称。 |
+| `%typewriter_tracked_objectives%` | 被追踪任务的目标列表,用逗号分隔。 |
 
-## Sidebar
+## 侧边栏
 
-If Typewriter is managing your sidebar, you can use the [Objective Lines Entry](../../../adapters/BasicAdapter/entries/quest/objective_lines.mdx) to display the objectives of the tracked quest.
+如果 Typewriter 正在管理你的侧边栏,你可以使用[目标行条目](../../../adapters/BasicAdapter/entries/quest/objective_lines.mdx)来显示被追踪任务的目标。
 
-A possible setup for the sidebar could be:
-
+侧边栏的一个可能设置如下:
 
 <EntryDisplay pages={[
     require("./assets/display/quest_display_manifest.json"),
 ]} />
 
-
-## Quest Status Changes
+## 任务状态变化
 #
-You can also display when a quest becomes active or is completed.
-Maybe by showing a title or particles.
+你也可以显示任务何时变为激活状态或完成。
+可能通过显示标题或粒子效果。
 
-A possible setup for this could be:
+这种情况的一个可能设置如下:
 
 <EntryDisplay pages={[
     require("./assets/display/quest_display_sequence.json"),

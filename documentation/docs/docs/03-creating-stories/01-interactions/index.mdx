@@ -1,63 +1,63 @@
 ---
-difficulty: Easy
+difficulty: 简单
 ---
-import Player from "@site/src/components/Player";
+import Player from "@theme/Player";
 import Image from "@site/src/components/Image";
 import EntrySearch from "@site/src/components/EntrySearch";
 
-# First Interaction
+# 第一个互动
 
-:::info[Before starting]
-This guide assumes that you have already installed the [Basic Extension](../../02-getting-started/01-installation.mdx#basic-extension).
+:::info[开始之前]
+本指南假设你已经安装了[Basic Extension](../../02-getting-started/01-installation.mdx#basic-extension)。
 
-Also, make sure you have read the [layout](../../02-getting-started/02-layout.mdx) documentation and created a **sequence** page.
+同时,请确保你已经阅读了[布局](../../02-getting-started/02-layout.mdx)文档并创建了一个**序列**页面。
 :::
 
-Let's create our first interaction. Our example interaction will have the following steps:
+让我们创建我们的第一个互动。我们的示例互动将包含以下步骤:
 
-1. The player clicks on a flower.
-2. A chat dialogue opens.
+1. 玩家点击一朵花。
+2. 打开一个聊天对话框。
 
-If you need any assistance during the process, feel free to ask for help on our [Discord](https://discord.gg/HtbKyuDDBw).
+如果在过程中需要任何帮助,请随时在我们的[Discord](https://discord.gg/HtbKyuDDBw)上寻求帮助。
 
-## What are interactions?
+## 什么是互动?
 
-An interaction occurs when the player interacts with something and triggers an event. In this tutorial, the player clicking on the flower is the interaction, and the chat dialogue is the event that gets triggered.
+当玩家与某物互动并触发事件时就会发生互动。在本教程中,玩家点击花朵是互动,而打开的聊天对话框是被触发的事件。
 
-## Creating an interaction
+## 创建互动
 
-Let's get started by creating an entry. Click on the + icon in the top right corner of the panel and search for `on interact with block`. Add it to your page by clicking on the + icon.
+让我们从创建一个条目开始。点击面板右上角的 + 图标并搜索 `on interact with block`。通过点击 + 图标将其添加到你的页面。
 
 <EntrySearch entryName='on_interact_with_block'/>
 
-### Configuring the interaction
+### 配置互动
 
-In the inspector, set the block to `Red Tulip` (1) and the name to `on flower click` (2)
+在检查器中,将方块设置为 `Red Tulip`(红色郁金香)(1)并将名称设置为 `on flower click`(2)
 
-<Image img={require("../../assets/interactions/on_flower_click.png")} alt="Configuring an interact with flow entry" width={400} />
+<Image img={require("../../assets/interactions/on_flower_click.png")} alt="配置互动方块条目" width={400} />
 
-## Creating an event
+## 创建事件
 
-Now we need to create an event that gets triggered when the player clicks on the flower. Right-click on the `On Flower Click` entry and click on `+ link with ...` to open the search menu. Search for `Add Spoken` and add it to the page.
+现在我们需要创建一个当玩家点击花朵时触发的事件。右键点击 `On Flower Click` 条目并点击 `+ link with ...` 打开搜索菜单。搜索 `Add Spoken` 并将其添加到页面。
 
 <Player url={require("../../assets/interactions/add-spoken.webm").default} />
 
-### Configuring the event
+### 配置事件
 
-In the inspector, set the text to `Hello! I am a flower.` and set the duration to `1s`. 
+在检查器中,将文本设置为 `Hello! I am a flower.` 并将持续时间设置为 `1s`。
 
-### Configuring the speaker
+### 配置说话者
 
-Follow these steps to configure the speaker:
-1. Click on the text `Select a speaker` and in the search menu, click on `Add Simple Speaker`. 
-2. Select `Add static` and give that static page a name.
-3. Click on the simple speaker.
-4. Inside the inspector, set the Display Name to `A beautiful flower`.
+按照以下步骤配置说话者:
+1. 点击 `Select a speaker` 文本,在搜索菜单中点击 `Add Simple Speaker`。
+2. 选择 `Add static` 并为该静态页面命名。
+3. 点击简单说话者。
+4. 在检查器中,将显示名称设置为 `A beautiful flower`。
 
 <Player url={require("../../assets/interactions/simple-speaker.webm").default} />
 
-## Result
+## 结果
 
-You can now publish your pages, and in-game, it should look like this when clicking on the flower:
+现在你可以发布你的页面了,在游戏中点击花朵时应该是这样的:
 
 <Player url={require("../../assets/interactions/final-result-default.webm").default} />
